@@ -122,6 +122,7 @@
 				
 			$sql_ue_submit = change_yusendo($table,$offset,$currentpage,$total_data,$result_ue,$ID_change,0,$page_change);
 			if($sql_ue_submit == false){//アップデート失敗処理
+			search();
 			 echo "<div class='Kensaku-box'><p>優先度変更ができませんでした。</p></div>"; 
 			 exit;}
 			 
@@ -143,6 +144,7 @@
 					pg_query($dbconn, "COMMIT");//トランザクション終了
 			$sql_sita_submit = change_yusendo($table,$offset,$currentpage,$total_data,$result_sita,$ID_change,1,$page_change);
 			if($sql_sita_submit == false){//アップデート失敗処理
+			search();
 			 echo "<div class='Kensaku-box'><p>優先度変更ができませんでした。</p></div>"; 
 			 exit;}
 			 
