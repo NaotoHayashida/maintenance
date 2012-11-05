@@ -400,7 +400,7 @@ echo <<< __EOS0__
 <div class="g-ichiran">
 
 <div class="Yajirushi-left">
-<form name="hyo_form" method="POST">
+<form name="hyo_form" method="POST" onsubmit="return send_check()">
 <input type="submit" name="mode" value="↑">
 <input type="submit" name="mode" value="↓">
 </div>
@@ -485,3 +485,19 @@ __EOS1__;
 </body>
 
 </html>
+
+<script language="JavaScript">  
+<!--  
+sent = false;  
+//2重投稿を防止する  
+function send_check(){  
+    if(sent){  
+        
+        return false  
+    }else{  
+        sent = true  
+        return true  
+    }  
+}  
+// -->  
+</script>
