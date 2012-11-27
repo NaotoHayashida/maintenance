@@ -59,7 +59,7 @@
 				$_SESSION['gyoji-iti_title']			= "";
 				$_SESSION['gyoji-iti_kaishi_bi'] 		= "";
 				$_SESSION['gyoji-iti_syuryo_bi'] 		= "";
-				$_SESSION['gyoji-iti_cale']	 			= "TRUE";
+				$_SESSION['gyoji-iti_cale']	 			= "";
 				$_SESSION['gyoji-iti_newview']			= "";
 	}
 	
