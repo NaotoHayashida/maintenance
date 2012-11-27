@@ -21,7 +21,7 @@ echo <<< __menu__
 			<h3><a href="kyukambi_toroku.php">休館日登録</a></h3>
 			</div>
 			<div class="kanri">
-			<h3><a href="kyukambi_ikkatsu_toroku.php">休暇日一括登録</a></h3>
+			<h3><a href="kyukambi_ikkatsu_toroku.php">休館日一括登録</a></h3>
 			</div>
 
 
