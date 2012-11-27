@@ -14,8 +14,8 @@ function isValidDate(dateStr)
 	var dateArray = dateStr.split("/");
 	var year  = parseInt(dateArray[0], 10);
 	var month = parseInt(dateArray[1], 10) - 1; //月は0オリジン
-//	var day   = parseInt(dateArray[2], 10);
-	var day   = parseInt(dateArray[2]);
+	var day   = parseInt(dateArray[2], 10);
+
 
     if (month < 0 || 11 < month)
 	{
