@@ -346,12 +346,6 @@ function change_yusendo_sql($table,$SerchConditions,$hyojikensu,$offset){
 ****************************************************************/
 
 function change_yusendo($table,$offset,$currentpage,$total_data,$result,$ID_change,$up_down,&$page_change){
-		if($ID_change == 1  && $up_down == 0){//ページ跨ぎ処理 ↑なら1ページ戻る
-				$page_change = $page_change - 1;
-		}
-		if($ID_change == 10 && $up_down == 1){//ページ跨ぎ処理 ↑なら1ページ進む
-				$page_change = $page_change + 1;
-		}
 
 		$lastnum_chehk 	= ($currentpage -1 ) * 10 + $ID_change;
 		//最大件数と同値ならfalseを返す
