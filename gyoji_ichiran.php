@@ -399,7 +399,12 @@ while($row = pg_fetch_object($result)){//表示ループ開始
 	
 	
 	echo		"<tr>";
-	echo			"<td><input type='radio' name='ID_change' value='$i'></td>";
+	//一番最初のラジオボタンにチェックを入れる処理
+	if($i==1){
+		echo			"<td><input type='radio' name='ID_change' value='$i' checked></td>";
+	}else{
+		echo			"<td><input type='radio' name='ID_change' value='$i'></td>";
+	}
 	echo			"	<td>$id</td>										 			\n";
 	echo			"	<td>".gyojiKubunNameGet($gyoujikubun)."</td>									 			\n";
 	echo			"	<td>$title</td>								 			\n";
