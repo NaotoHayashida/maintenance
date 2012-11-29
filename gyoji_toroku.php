@@ -233,23 +233,21 @@ function gyojitoroku_minyuryoku_check(){
 		}
 	
 	var kaishibi_chk = minyuryoku_check("kaishibi");
-	var shuryobi_chk = minyuryoku_check("shuryobi");
-
-	var kaishibi = document.form.kaishibi.value;
-	var shuryobi = document.form.shuryobi.value;
-
-
 
 	if(kaishibi_chk == false){
 		alert('開始日が未入力です。');
 		return false;
 	}
 
+	var shuryobi_chk = minyuryoku_check("shuryobi");
+
 	if(shuryobi_chk == false){
 		alert('終了日が未入力です。');
 		return false;
 	}
 
+	var kaishibi = document.form.kaishibi.value;
+	var shuryobi = document.form.shuryobi.value;
 	var kikan_chk = isValidPeriod(kaishibi,shuryobi,true);
 
 	if(kikan_chk == false){
