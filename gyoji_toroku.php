@@ -12,6 +12,8 @@
 	$anchor = $_POST["anchor"];													//アンカー
 	$kaishibi = $_POST["kaishibi"];												//期間の開始日
 	$shuryobi = $_POST["shuryobi"];												//期間の終了日
+	define("title_max",40);														//タイトル文字数制限
+	define("comment_max",40);													//コメント文字数制限
 
 if(isset($_POST["k_cal"])){
 	$k_cal = 1;																//カレンダーに公開
@@ -146,13 +148,14 @@ if($update_id != "" and $mode == "insert" ){
 					<p class="toroku1" >タイトル</p>
 				</div>
 				<div class="gyoji-right1">
-					<p class="toroku2"><input type="text" name="title" size="30" maxlength="40" value="<?= $h_title ?>"/></p>
+<!--				<p class="toroku2"><input type="text" name="title" size="30" maxlength="40" value="<?= $h_title ?>"/></p>-->
+					<p class="toroku2"><textarea cols="30" rows="2" maxlength="<?= title_max; ?>" name="title" class="title"><?= $h_title; ?></textarea></p>
 				</div>
 				<div class="gyoji-left1">
 					<p class="toroku1">コメント</p>
 				</div>
 				<div class="gyoji-right1">
-					<p class="toroku2"><textarea cols="30" rows="2" maxlength="40" name="comment" class="comment"><?= $h_comment; ?></textarea></p>
+					<p class="toroku2"><textarea cols="30" rows="2" maxlength="<?= comment_max; ?>" name="comment" class="comment"><?= $h_comment; ?></textarea></p>
 				</div>
 				<div class="gyoji-left1">
 					<p class="toroku1" >段落名</p>
@@ -301,12 +304,11 @@ function gyojitoroku_minyuryoku_check(){
 	}
 }
 
-     $(function() {
-    
-      $('textarea.comment').maxlength({
-        'feedback': 40});
-      });
-      
+	$(function() {
+		$('textarea.title').maxlength({'feedback': title_max});
+		$('textarea.comment').maxlength({'feedback': comment_max});
+	});
+
 //-->
 </script>
 <?php
