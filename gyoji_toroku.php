@@ -212,8 +212,8 @@ function goToTop_preview(){
 }
 
 function gyojitoroku_minyuryoku_check(){
-	var k_new = document.form.k_new.checked;
-	var k_cal = document.form.k_cal.checked;
+//	var k_new = document.form.k_new.checked;
+//	var k_cal = document.form.k_cal.checked;
 	
 	var gyojikubun_chk = minyuryoku_check("gyojikubun");
 
@@ -264,14 +264,14 @@ function gyojitoroku_minyuryoku_check(){
 				return false;
 			}
 		}
-		else{
+/*		else{
 			var comment_chk = minyuryoku_check("comment");
 
 			if(comment_chk == false){
 				alert('コメントが未入力です。');
 				return false;
 			}
-		}
+		}*/
 		
 	}
 	if(k_new == true && k_cal == true){
