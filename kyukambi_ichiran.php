@@ -78,6 +78,13 @@
 	
 	$total_data = pg_num_rows($result);
 	
+	//offsetの値設定	
+	if($total_data == 0){
+		$offset 	= 0;
+	}else{
+		$offset = $currentpage * 10 - 10; //「10」は1ページに表示する最大行事数の値
+	}
+	
 	//10件表示するかの判断
 	$hyojikensu = HyojiKensu($total_data,$currentpage);
 
@@ -91,7 +98,6 @@
 	
 	error($result);
 	
-	PageCounter($total_data,$currentpage,$offset);
 	
 		if($mode == "実行"){ 	
 			//削除フラグ実行
@@ -125,6 +131,29 @@
 			}
 			//更新フラグ終了
 			}
+			
+			
+//検索条件文作成
+
+	$sql = "select * from {$table}  {$kyukam_SerchConditions} ";
+	$result = pg_query($dbconn, $sql);
+
+	pg_query($dbconn, "COMMIT");//トランザクション終了
+
+	if ($result == false)
+	{
+//エラー処理
+		exit(dbErrorMessageCreate("DB抽出に失敗しました。", $sql, $dbconn));
+	}
+		
+//データ総数取得
+	$total_data = pg_num_rows($result);
+
+//何ページ目か表示
+	PageCounter($total_data,$currentpage,$offset);
+	
+	
+	
 //DB再検索
 	pg_query($dbconn, "BEGIN"); //トランザクション開始
 
