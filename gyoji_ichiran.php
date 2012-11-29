@@ -211,7 +211,7 @@
 	pg_query($dbconn, "COMMIT");//トランザクション終了
 
 //表一覧を表示する 
-	hyouview($hyojikensu,$result);
+	hyouview($hyojikensu,$result,$mode);
 
 
 
@@ -350,7 +350,7 @@ __searchbar__;
 //
 /************************************************************/
 
-function hyouview($hyou_hyouji,&$result){
+function hyouview($hyou_hyouji,&$result,$mode){
 //表示についての全般的な処理を行う関数
 //$hyou_hyouji 表示回数
 
@@ -399,12 +399,24 @@ while($row = pg_fetch_object($result)){//表示ループ開始
 	
 	
 	echo		"<tr>";
-	//一番最初のラジオボタンにチェックを入れる処理
-	if($i==1){
-		echo			"<td><input type='radio' name='ID_change' value='$i' checked></td>";
-	}else{
-		echo			"<td><input type='radio' name='ID_change' value='$i'></td>";
+	echo			"<td><input type='radio' name='ID_change' value='$i'";
+	//一番最初のラジオボタンにチェックを入れる処理（初期設定）
+	if($i ==1 ){
+		echo " checked";
 	}
+	//↓ボタンが押された時にチェックを入れる処理
+	if($_POST["ID_change"]+1==$i){
+		if($mode == "↓"){
+			echo " checked";
+		}
+	}
+	//↑ボタンが押された時にチェックを入れる処理
+	if($_POST["ID_change"]-1==$i){
+		if($mode == "↑"){
+			echo " checked";
+		}
+	}
+	echo "></td>";
 	echo			"	<td>$id</td>										 			\n";
 	echo			"	<td>".gyojiKubunNameGet($gyoujikubun)."</td>									 			\n";
 	echo			"	<td>$title</td>								 			\n";
