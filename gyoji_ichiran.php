@@ -94,6 +94,12 @@
 //データ総数取得
 	$total_data = pg_num_rows($result);
 
+//offsetの値設定	
+	if($total_data == 0){
+		$offset 	= 0;
+	}else{
+		$offset = $currentpage * 10 - 10; //「10」は1ページに表示する最大行事数の値
+	}
 
 //10件表示するかの判断
 	$hyojikensu = HyojiKensu($total_data,$currentpage);
@@ -107,13 +113,6 @@
 	search();
 
 
-
-
-
-
-
-//何ページ目か表示
-	PageCounter($total_data,$currentpage,$offset);
 
 //検索条件作成
 	$SerchConditions =  SerchConditions($_SESSION['gyoji-iti_ID'],$_SESSION['gyoji-iti_gyouji_kubun'],$_SESSION['gyoji-iti_title'],$_SESSION['gyoji-iti_kaishi_bi'],$_SESSION['gyoji-iti_syuryo_bi'],$_SESSION['gyoji-iti_cale'],$_SESSION['gyoji-iti_newview']);
@@ -199,6 +198,31 @@
 			}
 			//更新フラグ終了
 	}//実行ボタンから飛んできた
+
+
+
+
+//検索条件文作成
+
+	$sql = "select * from {$table} {$SerchConditions}";
+	$result = pg_query($dbconn, $sql);
+
+	pg_query($dbconn, "COMMIT");//トランザクション終了
+
+	if ($result == false)
+	{
+//エラー処理
+		exit(dbErrorMessageCreate("DB抽出に失敗しました。", $sql, $dbconn));
+	}
+		
+//データ総数取得
+	$total_data = pg_num_rows($result);
+
+//何ページ目か表示
+	PageCounter($total_data,$currentpage,$offset);
+
+
+
 
 //DB再検索
 	pg_query($dbconn, "BEGIN"); //トランザクション開始
