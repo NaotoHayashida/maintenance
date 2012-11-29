@@ -222,16 +222,6 @@ function gyojitoroku_minyuryoku_check(){
 		return false;
 	}
 
-	var title_chk = minyuryoku_check("title");
-	
-	if(k_new !== false || k_cal !== true){
-	
-			if(title_chk == false){
-				alert('タイトルが未入力です。');
-				return false;
-				}
-		}
-	
 	var kaishibi_chk = minyuryoku_check("kaishibi");
 
 	if(kaishibi_chk == false){
@@ -260,7 +250,8 @@ function gyojitoroku_minyuryoku_check(){
 	var k_cal = document.form.k_cal.checked;
 
 	if(k_new == true && k_cal == false){
-		alert('カレンダー非公開、新着情報公開という設定はできません。');		return false;
+		alert('カレンダー非公開、新着情報公開という設定はできません。');
+		return false;
 	}
 
 	if(k_new == false ){
@@ -284,11 +275,28 @@ function gyojitoroku_minyuryoku_check(){
 		
 	}
 	if(k_new == true && k_cal == true){
+		var title_chk = minyuryoku_check("title");
+
+		if(title_chk == false){
+			alert('タイトルが未入力です。');
+			return false;
+		}
+
 		var comment_chk = minyuryoku_check("comment");
 
 		if(comment_chk == false){
 			alert('コメントが未入力です。');
 			return false;
+		}
+
+		if(document.form.gyojikubun.value != 2){
+
+			var anchor_chk = minyuryoku_check("anchor");
+
+			if(anchor_chk == false){
+				alert('アンカーが未入力です。');
+				return false;
+			}
 		}
 	}
 }
