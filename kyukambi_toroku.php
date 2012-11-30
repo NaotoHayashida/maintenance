@@ -135,7 +135,7 @@ if($update_id != "" and $mode == "insert" ){
 					<p>
 						<input type="hidden" name="mode" value="insert">
 						<input type="submit" value="実行" class="button" onclick="return stay_here();">
-						<?php 	//UPDATEしたさい重複チェックに引っかかった場合のエラー文			
+						<?php 	//UPDATEしたさい重複チェックに引っかかった場合のエラー文。			
 							if($error == 1){echo	"<p style='color:red; font-weight: bold;'>そのデータは既に登録済みです。</p>";}
 						?>
 					</p>
