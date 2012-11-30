@@ -121,7 +121,7 @@ if($update_id != "" and $mode == "insert" ){
 					<p class="toroku1" >日付</p>
 				</div>
 				<div class="gyoji-right1">
-					<p class="toroku2"><input type="text" name="hizuke" id="datepicker" maxlength='10' size="30" value="<?= $h_hizuke ?>"/></p>
+					<p class="toroku2"><input type="text" name="hizuke" id="jquery-ui-datepicker-to" maxlength='10' size="30" value="<?= $h_hizuke ?>"/></p>
 				</div>
 				<div class="gyoji-left2">
 					<pre class="toroku1">新着情報に公開 <?php echo "<input type='checkbox' name='k_new' value='t'";if($shinchaku_kokai == 't'){echo " checked='checked'";}echo ">	\n"; ?></pre>
