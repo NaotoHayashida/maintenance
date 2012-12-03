@@ -108,7 +108,7 @@
 //検索条件作成
 //	$SerchConditions =  SerchConditions($_SESSION['gyoji-iti_ID'],$_SESSION['gyoji-iti_gyouji_kubun'],$_SESSION['gyoji-iti_title'],$_SESSION['gyoji-iti_kaishi_bi'],$_SESSION['gyoji-iti_syuryo_bi'],$_SESSION['gyoji-iti_cale'],$_SESSION['gyoji-iti_newview']);
 
-	error($result);
+//	error($result);
 //ページマタギ処理初期化
 	$page_change = 0;
 
