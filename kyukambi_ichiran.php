@@ -88,7 +88,7 @@
 	//10件表示するかの判断
 	$hyojikensu = HyojiKensu($total_data,$currentpage);
 
-	error($result);
+//	error($result);
 	
 	
 		if($mode == "実行"){ 	
@@ -290,9 +290,9 @@ function hyouview($hyou_hyouji,&$result){
 //表示についての全般的な処理を行う関数
 //$hyou_hyouji 表示回数
 
-if($result == NULL){
-//$hyou_hyoujiが10以上の時中断
-echo		"<div class=''><p>検索結果がありませんでした</p></div>";
+//検索した行事が一件も無かったときの処理
+if (pg_num_rows($result) == 0){
+echo		"<div class='Kensaku-box'><p>検索結果がありませんでした</p></div>";
 exit;
 }
 
