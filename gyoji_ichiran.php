@@ -319,7 +319,7 @@ function search(){
 //
 
 echo <<< __searchbar__
-<form name="searchbar" method="POST" OnSubmit="return AllSerchCheck('IDsearch')">
+<form name="searchbar" method="POST" OnSubmit="return AllSerchCheck('IDsearch','kaishibi_search','syuryobi_search')">
 <div class="Kensaku-box">
 <table class ="table1-t1">
 	<tbody>
@@ -367,7 +367,7 @@ echo <<< __searchbar__
 <div class="Kensaku-btn">
 <input type="hidden" name="currentpage_start" value="1">
 <input type="submit" name="mode_serch" value="開始" class="button">
-<input type="submit" name="mode_serch" value="リセット" class="button">
+<input type="submit" name="mode_serch" value="リセット" class="button" onClick="document.searchbar.reset()">
 </div>
 </form>
 __searchbar__;
