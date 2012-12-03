@@ -61,7 +61,7 @@ function HyojiKensu($total_data,$currentpage){
 * 戻り値： $tag：スクリプトを書いた文字列
 ****************************************************************/
 
-function PageCounter($total_data,$currentpage,&$start){
+function PageCounter($total_data,&$currentpage,&$start,&$hyojikensu,&$session_currentpage){
 	if($total_data == 0){
 	$start 	= 0;
 	$end	= 0;
@@ -81,6 +81,34 @@ function PageCounter($total_data,$currentpage,&$start){
 
 		}
 	}
+	
+	//検索条件を指定した状態で行事の更新をした後にそのページ内に表示できる行事がない時に１ページ目に移動する処理
+	
+	if($start > $total_data){
+	
+		//1～10と表示するための設定
+		$start = 1;
+		$end   = 10;
+			
+	
+		
+		$currentpage = 1; //1ページ
+		$hyojikensu = 10; //10件表示する
+		$session_currentpage=1; //関数を出た後も1ページ目を保持するためにセッションに設定
+		
+	
+		
+	}
+	
+	if($total_data != 0){
+	//次の10件・前の10件を表示
+	Before_After($total_data,$currentpage);
+	}
+
+	
+	//検索表を表示
+	search();
+	
 	echo "<div name='pagecunter' class='Kensu-now'><p>",$start,"～",$end,"　/ ",$total_data,"　件</p></div>";
 
 //offset のために0にしておく
