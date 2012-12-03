@@ -382,7 +382,6 @@ function hyouview($hyou_hyouji,&$result,$mode){
 
 //検索した行事が一件も無かったときの処理
 if (pg_num_rows($result) == 0){
-//$hyou_hyoujiが10以上の時中断
 echo		"<div class='Kensaku-box'><p>検索結果がありませんでした</p></div>";
 exit;
 }
