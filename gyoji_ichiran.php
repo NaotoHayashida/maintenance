@@ -380,9 +380,10 @@ function hyouview($hyou_hyouji,&$result,$mode){
 //表示についての全般的な処理を行う関数
 //$hyou_hyouji 表示回数
 
-if($result == NULL){
+//検索した行事が一件も無かったときの処理
+if (pg_num_rows($result) == 0){
 //$hyou_hyoujiが10以上の時中断
-echo		"<div class=''><p>検索結果がありませんでした</p></div>";
+echo		"<div class='Kensaku-box'><p>検索結果がありませんでした</p></div>";
 exit;
 }
 
