@@ -168,10 +168,26 @@ $tag = <<< __ikkatu__
 							}	
 							}	
 	}
-	
-	function AllSerchCheck(ID){
 
-		if(Id_Serch_check(ID) == false){
+	function AllSerchCheck(ID,START_DAY,END_DAY){
+
+		var chk = document.getElementsByName(START_DAY);
+		if(isZen(chk[0].value)){
+			//正常時の処理なし
+		}else{
+			alert('開始日は半角数字、日付形式以外無効です。');
+			return false;
+		}
+
+		var chk = document.getElementsByName(END_DAY);
+		if(isZen(chk[0].value)){
+			//正常時の処理なし
+		}else{
+			alert('終了日は半角数字、日付形式以外無効です。');
+			return false;
+		}
+
+	if(Id_Serch_check(ID) == false){
 			return false;
 		}
 		if(isValidPeriod(fromStr, toStr, false) == false){
@@ -179,7 +195,6 @@ $tag = <<< __ikkatu__
 		}
 
 	}
-	
 
 	function Id_Serch_check(chk_name){
 			var chk  = document.getElementsByName(chk_name);
@@ -195,6 +210,18 @@ $tag = <<< __ikkatu__
 				}
 
 		}
+
+  function isZen(str){
+		for(var i=0; i<str.length; i++){
+			var len=escape(str.charAt(i)).length;
+			if(len>=4){
+				alert("全角文字が含まれています");
+				return false;
+			}
+		}
+			//正常時の処理なし
+		return true;
+	}
 
 	function kakunin(){
 		if(confirm("更新/削除を行いますか？")== true){
