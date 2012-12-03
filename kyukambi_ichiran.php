@@ -88,14 +88,6 @@
 	//10件表示するかの判断
 	$hyojikensu = HyojiKensu($total_data,$currentpage);
 
-	if($total_data != 0){
-	//次の10件・前の10件を表示
-	Before_After($total_data,$currentpage);
-	}
-	
-
-	search();
-	
 	error($result);
 	
 	
@@ -132,7 +124,11 @@
 			//更新フラグ終了
 			}
 			
-			
+//offsetの値設定	
+	if(0 > $offset){
+		 $offset = 0;
+	}
+
 //検索条件文作成
 
 	$sql = "select * from {$table}  {$kyukam_SerchConditions} ";
@@ -150,9 +146,12 @@
 	$total_data = pg_num_rows($result);
 
 //何ページ目か表示
-	PageCounter($total_data,$currentpage,$offset);
+	PageCounter($total_data,$currentpage,$offset,$hyojikensu,$_SESSION['kyukam-iti_currentpage']);
 	
-	
+//offsetの値設定	
+	if(0 > $offset){
+		 $offset = 0;
+	}	
 	
 //DB再検索
 	pg_query($dbconn, "BEGIN"); //トランザクション開始
