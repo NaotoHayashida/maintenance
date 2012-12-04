@@ -160,6 +160,7 @@
 
 	if($mode == "実行"){ 
 			//更新フラグの確認
+			//リザルトの新規取得
 			pg_query($dbconn, "BEGIN"); //トランザクション開始
 					$sql = "select * from {$table} {$SerchConditions} order by {$yusendo} DESC limit {$hyojikensu} offset {$offset}";
 					$result = pg_query($dbconn, $sql);
@@ -191,7 +192,7 @@
 				pg_query($dbconn, "COMMIT");
 			}
 			//削除フラグ終了
-			//リザルトの新規取得
+
 
 
 }
