@@ -180,7 +180,7 @@
 					$sql = "select * from {$table} {$SerchConditions} order by {$yusendo} DESC limit {$hyojikensu} offset {$offset}";
 					$result = pg_query($dbconn, $sql);
 			pg_query($dbconn, "COMMIT");//トランザクション終了
-
+					if($sql_delete == NULL){ 
 			$sql_update_cv = update_cale_and_newview($hyojikensu,$table,$result);
 			if($sql_update_cv != NULL){
 				pg_query($dbconn, "BEGIN"); //トランザクション開始
@@ -188,6 +188,7 @@
 				pg_query($dbconn, "COMMIT");//トランザクション終了
 			}
 			//更新フラグ終了
+		}
 	}//実行ボタンから飛んできた
 
 
