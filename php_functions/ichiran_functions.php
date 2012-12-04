@@ -308,20 +308,20 @@ function SerchConditions($id_search,$gyouji_search,$title_search,$kaishibi_searc
 		else{
 					if(!$kaishibi_search == "" ){
 						if(!$start == 0){
-							$SerchConditions .= "and kaishi_bi >= '{$kaishibi_search}' or shuryo_bi >= '{$kaishibi_search}' ";
+							$SerchConditions .= "and kaishi_bi >= '{$kaishibi_search}' and shuryo_bi >= '{$kaishibi_search}' ";
 						}
 						else{
-							$SerchConditions .= "kaishi_bi >= '{$kaishibi_search}' or shuryo_bi >= '{$kaishibi_search}' ";
+							$SerchConditions .= "kaishi_bi >= '{$kaishibi_search}' and shuryo_bi >= '{$kaishibi_search}' ";
 							$start = 1;
 												}	
 
 					}
 					if(!$syuryobi_search == ""){
 							if(!$start == 0){
-							$SerchConditions .= "and kaishi_bi <= '{$syuryobi_search}' or shuryo_bi <= '{$syuryobi_search}' ";
+							$SerchConditions .= "and kaishi_bi <= '{$syuryobi_search}' and shuryo_bi <= '{$syuryobi_search}' ";
 						}
 						else{
-							$SerchConditions .= "kaishi_bi <= '{$syuryobi_search}' or shuryo_bi <= '{$syuryobi_search}'  ";
+							$SerchConditions .= "kaishi_bi <= '{$syuryobi_search}' and shuryo_bi <= '{$syuryobi_search}'  ";
 							$start = 1;
 						}
 												}
