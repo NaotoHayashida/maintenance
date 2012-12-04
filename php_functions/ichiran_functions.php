@@ -215,7 +215,6 @@ $tag = <<< __ikkatu__
 		for(var i=0; i<str.length; i++){
 			var len=escape(str.charAt(i)).length;
 			if(len>=4){
-				alert("全角文字が含まれています");
 				return false;
 			}
 		}
