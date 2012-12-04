@@ -6,6 +6,7 @@
 	echo "<body>\n";
 	$update_id = $_GET["id"];
 	$mode = $_POST["mode"];
+	$action = $_POST["action"];													//実行条件判断
 	$title = $_POST["title"];													//タイトル
 	$comment = $_POST["comment"];												//コメント
 	$hizuke = $_POST["hizuke"];													//日付
@@ -19,6 +20,13 @@ else{
 	$k_new = 0;																//新着情報に公開
 }
 
+//リロード時にデータを反映
+if($mode == "insert"){
+	$h_title = $_POST["title"];
+	$h_comment = $_POST["comment"];
+	$h_hizuke = $_POST["hizuke"];
+	$shinchaku_kokai = $_POST["k_new"];
+}
 
 	//●DB接続
 	if (dbConnect($dbconn) == false)
@@ -46,6 +54,13 @@ if($update_id != ""){
 
 //UPdate実行
 if($update_id != "" and $mode == "insert" ){
+
+	//リロード時にデータを反映
+	$h_title = $_POST["title"];
+	$h_comment = $_POST["comment"];
+	$h_hizuke = $_POST["hizuke"];
+	$shinchaku_kokai = $_POST["k_new"];
+
 	//エラー処理　1ならUPdateしない
 	$error =0 ;
 	$sql = 	"select * from kyukambi where id = $update_id ";
@@ -70,32 +85,34 @@ if($update_id != "" and $mode == "insert" ){
 	}
 	//エラーがなかった場合　updateを実行する
 	if($error == 0){
-		$sql = 	"update kyukambi set ".
-		"title = '" . $title . "',comment = '" . $comment . "'," .
-		"hizuke = '" . $hizuke . "', shinchaku_kokai = '" . $k_new . "',".
-		"sakusei_sha = '" . $_SERVER['REMOTE_USER'] . "'".
-		"where id = " . $update_id . ";";
-		
-//			$_SESSION['gyoji-iti_ID'] 			= $update_id;
-		
-		pg_query($dbconn, "BEGIN"); //トランザクション開始
-		$result = pg_query($dbconn, $sql);
+		if($action == "実行"){
+			$sql = 	"update kyukambi set ".
+			"title = '" . $title . "',comment = '" . $comment . "'," .
+			"hizuke = '" . $hizuke . "', shinchaku_kokai = '" . $k_new . "',".
+			"sakusei_sha = '" . $_SERVER['REMOTE_USER'] . "'".
+			"where id = " . $update_id . ";";
+	//			$_SESSION['gyoji-iti_ID'] 			= $update_id;
+			pg_query($dbconn, "BEGIN"); //トランザクション開始
+			$result = pg_query($dbconn, $sql);
+			if ($result == false){
 
-		if ($result == false){
-
-			pg_query($dbconn, "ROLLBACK");
-			exit(dbErrorMessageCreate("DB登録に失敗しました。", $sql, $dbconn));
-
+				pg_query($dbconn, "ROLLBACK");
+				exit(dbErrorMessageCreate("DB登録に失敗しました。", $sql, $dbconn));
+			}
+			pg_query($dbconn, "COMMIT");
+			echo "<script language='JavaScript'>document.location = 'kyukambi_ichiran.php';</script>";
 		}
-
-		pg_query($dbconn, "COMMIT");
-		echo "<script language='JavaScript'>document.location = 'kyukambi_ichiran.php';</script>";
-
+		else if($action == "トップ"){
+			echo "<script language='JavaScript'>window.open('../new/index.html?preview=kyukambi_preview','newwindow');</script>";
+		}
+		else if($action == "博物館"){
+			echo "<script language='JavaScript'>window.open('../new/museum/index.html?preview=kyukambi_preview','newwindow');</script>";
+		}
 	}
 }
 ?>
 		<div class="all">
-			<form name="form" action="" method="POST">
+			<form action="" id='form' name="form" method="POST">
 				<div class="header">
 				<h2>休館日登録</h2>
 				</div>
@@ -125,16 +142,17 @@ if($update_id != "" and $mode == "insert" ){
 				</div>
 				<div class="gyoji-left2">
 					<pre class="toroku1">新着情報に公開 <?php echo "<input type='checkbox' name='k_new' value='t'";if($shinchaku_kokai == 't'){echo " checked='checked'";}echo ">	\n"; ?></pre>
-					<p class="toroku1"><INPUT type="image" src= "images/gototop.gif" onclick="return goToTop_preview(this.form);"></p>
+					<p class="toroku1"><INPUT type="image" src= "images/gototop.gif" onclick="return stay_here();" name="action" value="トップ"></p>
 				</div>
 				<div class="gyoji-right2">
 					<p>　</p>
-					<p class="toroku2"><INPUT type="image" src= "images/gotomuseum.gif" onclick="return goToHakubutsukan_preview(this.form);"></p>
+					<p class="toroku2"><INPUT type="image" src= "images/gotomuseum.gif" onclick="return stay_here();" name="action" value="博物館"></p>
 				</div>
 				<div class="kyotsu_ok">
 					<p>
+						<input type="hidden" name="preview" value="kyukambi_preview">
 						<input type="hidden" name="mode" value="insert">
-						<input type="submit" value="実行" class="button" onclick="return stay_here();">
+						<input type="submit" name="action" value="実行" class="button" onclick="return stay_here();">
 						<?php 	//UPDATEしたさい重複チェックに引っかかった場合のエラー文。			
 							if($error == 1){echo	"<p style='color:red; font-weight: bold;'>そのデータは既に登録済みです。</p>";}
 						?>
@@ -228,26 +246,29 @@ if($update_id == "" and $mode == "insert"){
 	}
 
 	if(pg_num_rows($result) == 0){
+		if($action == "実行"){
+			//●DB登録
+			$sql = 	"insert into kyukambi (title,comment,hizuke,shinchaku_kokai,sakusei_sha)".
+					"values ('" . $title . "','" . $comment . "','" . $hizuke . "','" . $k_new . "','" . $_SERVER['REMOTE_USER'] . "');";
+			pg_query($dbconn, "BEGIN"); //トランザクション開始
+			$result = pg_query($dbconn, $sql);
 
-		//●DB登録
-		$sql = 	"insert into kyukambi (title,comment,hizuke,shinchaku_kokai,sakusei_sha)".
-				"values ('" . $title . "','" . $comment . "','" . $hizuke . "','" . $k_new . "','" . $_SERVER['REMOTE_USER'] . "');";
+			if ($result == false){
 
-		pg_query($dbconn, "BEGIN"); //トランザクション開始
-		$result = pg_query($dbconn, $sql);
-
-		if ($result == false){
-
-			pg_query($dbconn, "ROLLBACK");
-			exit(dbErrorMessageCreate("DB登録に失敗しました。", $sql, $dbconn));
-
+				pg_query($dbconn, "ROLLBACK");
+				exit(dbErrorMessageCreate("DB登録に失敗しました。", $sql, $dbconn));
+			}
+			pg_query($dbconn, "COMMIT");
+			//検索条件を初期化
+			$_SESSION['kyukam-iti_first_access'] = NULL;
+			echo "<script language='JavaScript'>document.location = 'kyukambi_ichiran.php';</script>";
 		}
-		pg_query($dbconn, "COMMIT");
-
-		//検索条件を初期化
-		$_SESSION['kyukam-iti_first_access'] = NULL;
-		echo "<script language='JavaScript'>document.location = 'kyukambi_ichiran.php';</script>";
-
+		else if($action == "トップ"){
+			echo "<script language='JavaScript'>window.open('../new/index.html?preview=kyukambi_preview','newwindow');</script>";
+		}
+		else if($action == "博物館"){
+			echo "<script language='JavaScript'>window.open('../new/museum/index.html?preview=kyukambi_preview','newwindow');</script>";
+		}
 	}
 	else{
 

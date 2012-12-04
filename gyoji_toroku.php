@@ -6,6 +6,7 @@
 	echo "<body>\n";
 	$update_id = $_GET["id"];
 	$mode = $_POST["mode"];
+	$action = $_POST["action"];													//実行条件判断
 	$gyojikubun =  $_POST["gyojikubun"];										//行事区分
 	$title = $_POST["title"];													//タイトル
 	$comment = $_POST["comment"];												//コメント
@@ -28,6 +29,17 @@ else{
 	$k_new = 0;																//新着情報に公開
 }
 
+//リロード時にデータを反映
+if($mode == "insert"){
+	$h_gyojikubun = $_POST["gyojikubun"];
+	$h_title = $_POST["title"];
+	$h_comment = $_POST["comment"];
+	$h_anchor = $_POST["anchor"];
+	$h_kaishibi = $_POST["kaishibi"];
+	$h_shuryobi = $_POST["shuryobi"];
+	$calendar_kokai = $_POST["k_cal"];
+	$shinchaku_kokai = $_POST["k_new"];
+}
 
 	//●DB接続
 	if (dbConnect($dbconn) == false)
@@ -59,9 +71,20 @@ if($update_id != ""){
 
 //UPdate実行
 if($update_id != "" and $mode == "insert" ){
+
+	//リロード時にデータを反映
+	$h_gyojikubun = $_POST["gyojikubun"];
+	$h_title = $_POST["title"];
+	$h_comment = $_POST["comment"];
+	$h_anchor = $_POST["anchor"];
+	$h_kaishibi = $_POST["kaishibi"];
+	$h_shuryobi = $_POST["shuryobi"];
+	$calendar_kokai = $_POST["k_cal"];
+	$shinchaku_kokai = $_POST["k_new"];
+
 	//エラー処理　1ならUPdateしない
 	$error =0 ;
-	echo	"UPdate実行 \n";
+//	echo	"UPdate実行 \n";
 	$sql = 	"select * from gyoji where id = $update_id ";
 	$result = pg_query($dbconn, $sql);
 
@@ -94,26 +117,33 @@ if($update_id != "" and $mode == "insert" ){
 		
 		//エラーがなかった場合　updateを実行する
 		if($error == 0){
-			$sql = 	"update gyoji set ".
-			"gyoji_kubun = " . $gyojikubun . ",title = '" . $title . "'," .
-			"comment = '" . $comment . "', danraku_mei = '" . $anchor . "',".
-			"sakusei_sha = '" . $_SERVER['REMOTE_USER'] . "', kaishi_bi = '" . $kaishibi . "',".
-			"shuryo_bi = '" . $shuryobi . "', calendar_kokai = '" . $k_cal . "', shinchaku_kokai = '" . $k_new . "'".
-			"where id = " . $update_id . ";";
-			
-//			$_SESSION['gyoji-iti_ID'] 			= $update_id;
-			
-			pg_query($dbconn, "BEGIN"); //トランザクション開始
-			$result = pg_query($dbconn, $sql);
+			if($action == "実行"){
+				$sql = 	"update gyoji set ".
+				"gyoji_kubun = " . $gyojikubun . ",title = '" . $title . "'," .
+				"comment = '" . $comment . "', danraku_mei = '" . $anchor . "',".
+				"sakusei_sha = '" . $_SERVER['REMOTE_USER'] . "', kaishi_bi = '" . $kaishibi . "',".
+				"shuryo_bi = '" . $shuryobi . "', calendar_kokai = '" . $k_cal . "', shinchaku_kokai = '" . $k_new . "'".
+				"where id = " . $update_id . ";";
+				
+	//			$_SESSION['gyoji-iti_ID'] 			= $update_id;
+				
+				pg_query($dbconn, "BEGIN"); //トランザクション開始
+				$result = pg_query($dbconn, $sql);
 
-			if ($result == false)
-			{
-				pg_query($dbconn, "ROLLBACK");
-				exit(dbErrorMessageCreate("DB登録に失敗しました。", $sql, $dbconn));
+				if ($result == false)
+				{
+					pg_query($dbconn, "ROLLBACK");
+					exit(dbErrorMessageCreate("DB登録に失敗しました。", $sql, $dbconn));
+				}
+				pg_query($dbconn, "COMMIT");
+				echo "<script language='JavaScript'>document.location = 'gyoji_ichiran.php';</script>";
 			}
-			pg_query($dbconn, "COMMIT");
-						echo "<script language='JavaScript'>document.location = 'gyoji_ichiran.php';</script>";
-
+			else if($action == "トップ"){
+				echo "<script language='JavaScript'>window.open('../new/index.html?preview=gyoji_preview','newwindow');</script>";
+			}
+			else if($action == "博物館"){
+				echo "<script language='JavaScript'>window.open('../new/museum/index.html?preview=gyoji_preview','newwindow');</script>";
+			}
 		}
 	
 
@@ -171,16 +201,17 @@ if($update_id != "" and $mode == "insert" ){
 				</div>
 				<div class="gyoji-left2">
 					<pre class="toroku1">カレンダーに公開 <?php echo "<input type='checkbox' name='k_cal' value='t'";if($calendar_kokai == 't'){echo " checked='checked'";}echo ">	\n"; ?></pre>
-					<p class="toroku1"><INPUT type="image" src= "images/gototop.gif" onclick="return goToTop_preview(this.form);"></p>
+					<p class="toroku1"><INPUT type="image" src= "images/gototop.gif" onclick="return stay_here();" name="action" value="トップ"></p>
 				</div>
 				<div class="gyoji-right2">
 					<pre class="toroku2">新着情報に公開 <?php echo "<input type='checkbox' name='k_new' value='t'";if($shinchaku_kokai == 't'){echo " checked='checked'";}echo ">	\n"; ?></pre>
-					<p class="toroku2"><INPUT type="image" src= "images/gotomuseum.gif" onclick="return goToHakubutsukan_preview(this.form);"></p>
+					<p class="toroku2"><INPUT type="image" src= "images/gotomuseum.gif" onclick="return stay_here();" name="action" value="博物館"></p>
 				</div>
 				<div class="kyotsu">
 					<p>
+						<input type="hidden" name="preview" value="gyoji_preview">
 						<input type="hidden" name="mode" value="insert">
-						<input type="submit" value="実行" class="button" onclick="return stay_here();">
+						<input type="submit" name="action" value="実行" class="button" onclick="return stay_here();">
 					</p>
 				</div>
 <?php 	//UPDATEしたさい重複チェックに引っかかった場合のエラー文			
@@ -326,38 +357,44 @@ if($update_id == "" and $mode == "insert"){
 	}
 
 	if(pg_num_rows($result) == 0){
-		//●DB登録
-		$sql =	"select max(hyoji_yusendo) as maxa from gyoji";
-		$result = pg_query($dbconn, $sql);
-
-		if ($result == false){
-			exit(dbErrorMessageCreate("DB抽出に失敗しました。", $sql, $dbconn));
-		}
-		else{
-			$row1 = pg_fetch_object($result);
-			$yusendo = $row1->maxa + 1;
-			//pg_free_result($result)  //メモリの解放
-
-			$sql = 	"insert into gyoji (hyoji_yusendo,gyoji_kubun, title, comment, danraku_mei, ".
-					"sakusei_sha, kaishi_bi, shuryo_bi, calendar_kokai, shinchaku_kokai)".
-					"values (" . $yusendo . " ," . $gyojikubun . "," . "'" . $title . "'" . "," . "'" . $comment . "'" . "," . "'" . $anchor . "'" . ", '" . $_SERVER['REMOTE_USER'] . "'," .
-					"'" . $kaishibi . "'" . "," . "'" . $shuryobi . "'" . "," . "'" . $k_cal . "'" . "," . "'" . $k_new . "');";
-
-			pg_query($dbconn, "BEGIN"); //トランザクション開始
+		if($action == "実行"){
+			//●DB登録
+			$sql =	"select max(hyoji_yusendo) as maxa from gyoji";
 			$result = pg_query($dbconn, $sql);
 
-			if ($result == false)
-			{
-				pg_query($dbconn, "ROLLBACK");
-				exit(dbErrorMessageCreate("DB登録に失敗しました。", $sql, $dbconn));
+			if ($result == false){
+				exit(dbErrorMessageCreate("DB抽出に失敗しました。", $sql, $dbconn));
 			}
-			pg_query($dbconn, "COMMIT");
-			//検索条件を初期化
-			$_SESSION['gyoji-iti_first_access'] = NULL;
-			echo "<script language='JavaScript'>document.location = 'gyoji_ichiran.php';</script>";
+			else{
+				$row1 = pg_fetch_object($result);
+				$yusendo = $row1->maxa + 1;
+				//pg_free_result($result)  //メモリの解放
 
+				$sql = 	"insert into gyoji (hyoji_yusendo,gyoji_kubun, title, comment, danraku_mei, ".
+						"sakusei_sha, kaishi_bi, shuryo_bi, calendar_kokai, shinchaku_kokai)".
+						"values (" . $yusendo . " ," . $gyojikubun . "," . "'" . $title . "'" . "," . "'" . $comment . "'" . "," . "'" . $anchor . "'" . ", '" . $_SERVER['REMOTE_USER'] . "'," .
+						"'" . $kaishibi . "'" . "," . "'" . $shuryobi . "'" . "," . "'" . $k_cal . "'" . "," . "'" . $k_new . "');";
+
+				pg_query($dbconn, "BEGIN"); //トランザクション開始
+				$result = pg_query($dbconn, $sql);
+
+				if ($result == false)
+				{
+					pg_query($dbconn, "ROLLBACK");
+					exit(dbErrorMessageCreate("DB登録に失敗しました。", $sql, $dbconn));
+				}
+				pg_query($dbconn, "COMMIT");
+				//検索条件を初期化
+				$_SESSION['gyoji-iti_first_access'] = NULL;
+				echo "<script language='JavaScript'>document.location = 'gyoji_ichiran.php';</script>";
+			}
 		}
-
+		else if($action == "トップ"){
+			echo "<script language='JavaScript'>window.open('../new/index.html?preview=gyoji_preview','newwindow');</script>";
+		}
+		else if($action == "博物館"){
+			echo "<script language='JavaScript'>window.open('../new/museum/index.html?preview=gyoji_preview','newwindow');</script>";
+		}
 	}
 	else{
 		echo "同じ行事区分で、期間が重複しているデーターが存在するので登録できません。<br>";
