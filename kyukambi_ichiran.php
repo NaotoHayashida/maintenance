@@ -114,7 +114,7 @@
 			$sql_kousim = "select * from {$table} {$kyukam_SerchConditions} order by hizuke DESC limit {$hyojikensu} offset {$offset}";
 					$result_kousim = pg_query($dbconn, $sql_kousim);
 			pg_query($dbconn, "COMMIT");//トランザクション終了
-
+				if($sql_delete == NULL){ 
 			$sql_update_cv = update_cale_and_newview($hyojikensu,$table,$result_kousim);
 			if($sql_update_cv != NULL){
 				pg_query($dbconn, "BEGIN"); //トランザクション開始
@@ -122,6 +122,7 @@
 				pg_query($dbconn, "COMMIT");//トランザクション終了
 			}
 			//更新フラグ終了
+				}
 			}
 			
 //offsetの値設定	
