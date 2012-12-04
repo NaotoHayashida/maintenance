@@ -92,21 +92,7 @@
 	
 	
 		if($mode == "実行"){ 	
-			//削除フラグ実行
-			$sql_delete = delete_sql($hyojikensu,$table,$result);
-			//sql_deleteがからでなければ実行
-			if($sql_delete != NULL){
-				pg_query($dbconn, "BEGIN"); //トランザクション開始
-				pg_query($dbconn, $sql_delete);
 
-				if ($result == false)
-				{
-					pg_query($dbconn, "ROLLBACK");
-					exit(dbErrorMessageCreate("DB削除に失敗しました。", $sql_delete, $dbconn));
-				}
-				pg_query($dbconn, "COMMIT");
-			}
-			//削除フラグ終了
 			//更新フラグの確認
 			//リザルトの新規取得
 			pg_query($dbconn, "BEGIN"); //トランザクション開始
@@ -123,6 +109,21 @@
 			}
 			//更新フラグ終了
 				}
+			//削除フラグ実行
+			$sql_delete = delete_sql($hyojikensu,$table,$result);
+			//sql_deleteがからでなければ実行
+			if($sql_delete != NULL){
+				pg_query($dbconn, "BEGIN"); //トランザクション開始
+				pg_query($dbconn, $sql_delete);
+
+				if ($result == false)
+				{
+					pg_query($dbconn, "ROLLBACK");
+					exit(dbErrorMessageCreate("DB削除に失敗しました。", $sql_delete, $dbconn));
+				}
+				pg_query($dbconn, "COMMIT");
+			}
+			//削除フラグ終了
 			}
 			
 //offsetの値設定	

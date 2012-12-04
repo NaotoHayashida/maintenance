@@ -158,8 +158,25 @@
 	
 
 
-	if($mode == "実行"){ 	
-			//削除フラグ実行
+	if($mode == "実行"){ 
+			//更新フラグの確認
+			pg_query($dbconn, "BEGIN"); //トランザクション開始
+					$sql = "select * from {$table} {$SerchConditions} order by {$yusendo} DESC limit {$hyojikensu} offset {$offset}";
+					$result = pg_query($dbconn, $sql);
+			pg_query($dbconn, "COMMIT");//トランザクション終了
+				if($sql_delete == NULL){ 
+			$sql_update_cv = update_cale_and_newview($hyojikensu,$table,$result);
+			if($sql_update_cv != NULL){
+				pg_query($dbconn, "BEGIN"); //トランザクション開始
+					pg_query($dbconn, $sql_update_cv);//実行
+				pg_query($dbconn, "COMMIT");//トランザクション終了
+			}
+			//更新フラグ終了
+		}
+	//実行ボタンから飛んできた
+
+	
+			//削除フラグ実行1
 			$sql_delete = delete_sql($hyojikensu,$table,$result);
 			//sql_deleteがからでなければ実行
 			if($sql_delete != NULL){
@@ -174,22 +191,10 @@
 				pg_query($dbconn, "COMMIT");
 			}
 			//削除フラグ終了
-			//更新フラグの確認
 			//リザルトの新規取得
-			pg_query($dbconn, "BEGIN"); //トランザクション開始
-					$sql = "select * from {$table} {$SerchConditions} order by {$yusendo} DESC limit {$hyojikensu} offset {$offset}";
-					$result = pg_query($dbconn, $sql);
-			pg_query($dbconn, "COMMIT");//トランザクション終了
-					if($sql_delete == NULL){ 
-			$sql_update_cv = update_cale_and_newview($hyojikensu,$table,$result);
-			if($sql_update_cv != NULL){
-				pg_query($dbconn, "BEGIN"); //トランザクション開始
-					pg_query($dbconn, $sql_update_cv);//実行
-				pg_query($dbconn, "COMMIT");//トランザクション終了
-			}
-			//更新フラグ終了
-		}
-	}//実行ボタンから飛んできた
+
+
+}
 
 
 //検索条件作成	
