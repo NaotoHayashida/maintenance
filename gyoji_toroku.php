@@ -41,6 +41,19 @@ if($mode == "insert"){
 	$shinchaku_kokai = $_POST["k_new"];
 }
 
+//プレビュー表示時用のフォームデータを保存
+	$_SESSION["gyojikubun"] = $gyojikubun;
+	$_SESSION["title"] = $title;
+	$_SESSION["comment"] = $comment;
+	$_SESSION["anchor"] = $anchor;
+	$_SESSION["kaishibi"] = $kaishibi;
+	$_SESSION["shuryobi"] = $shuryobi;
+	$_SESSION["k_cal"] = $_POST["k_cal"];
+	$_SESSION["k_new"] = $k_new;
+
+//編集遷移判断
+	$_SESSION["id"] = $_GET["id"];
+
 	//●DB接続
 	if (dbConnect($dbconn) == false)
 	{
