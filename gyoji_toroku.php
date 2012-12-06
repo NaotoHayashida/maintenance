@@ -253,7 +253,7 @@ function gyojitoroku_minyuryoku_check(){
 	var kikan_chk = isValidPeriod(kaishibi,shuryobi,true);
 
 	if(kikan_chk == false){
-		alert('期間に誤りがあります。')
+		alert('期間に誤りがあります。');
 		return false;
 
 	}
@@ -262,7 +262,7 @@ function gyojitoroku_minyuryoku_check(){
 	var k_cal = document.form.k_cal.checked;
 
 	if(k_new == true && k_cal == false){
-		alert('カレンダー非公開、新着情報公開という設定はできません。');
+		alert('カレンダー非公開、新着情報公開という設定はできません。');		return false;
 	}
 
 	if(k_new == false ){
