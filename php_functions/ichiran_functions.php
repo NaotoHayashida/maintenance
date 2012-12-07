@@ -1,6 +1,6 @@
 <?PHP
 /************************************************************/
-//「前の十件」と「次の十件」表示を行う関数
+//「前の十件」と「次の十件」表示を行う関数 
 /************************************************************/
 	require_once "php_functions/common_functions.php";
 
@@ -285,7 +285,7 @@ function SerchConditions($id_search,$gyouji_search,$title_search,$kaishibi_searc
 
 	}
 	
-	if(!$title_search == ""){
+	if($title_search != ""){
 		if(!$start == 0){
 			$SerchConditions .= "and title like '%{$title_search}%' ";
 		}
@@ -545,7 +545,7 @@ function kyukam_SerchConditions($id_search,$kaishibi_search,$syuryobi_search,$ti
 	}
 			
 
-	if(!$title_search == ""){
+	if($title_search != ""){
 		if(!$start == 0){
 			$SerchConditions .= "and title like '%{$title_search}%' ";
 		}
