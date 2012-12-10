@@ -42,17 +42,17 @@ if($mode == "insert"){
 }
 
 //プレビュー表示時用のフォームデータを保存
-	$_SESSION["gyojikubun"] = $gyojikubun;
-	$_SESSION["title"] = $title;
-	$_SESSION["comment"] = $comment;
-	$_SESSION["anchor"] = $anchor;
-	$_SESSION["kaishibi"] = $kaishibi;
-	$_SESSION["shuryobi"] = $shuryobi;
-	$_SESSION["k_cal"] = $_POST["k_cal"];
-	$_SESSION["k_new"] = $k_new;
+	$_SESSION["check_gyojikubun"] = $gyojikubun;
+	$_SESSION["check_title"] = $title;
+	$_SESSION["check_comment"] = $comment;
+	$_SESSION["check_anchor"] = $anchor;
+	$_SESSION["check_kaishibi"] = $kaishibi;
+	$_SESSION["check_shuryobi"] = $shuryobi;
+	$_SESSION["check_k_cal"] = $_POST["k_cal"];
+	$_SESSION["check_k_new"] = $k_new;
 
 //編集遷移判断
-	$_SESSION["id"] = $_GET["id"];
+	$_SESSION["check_id"] = $_GET["id"];
 
 	//●DB接続
 	if (dbConnect($dbconn) == false)
