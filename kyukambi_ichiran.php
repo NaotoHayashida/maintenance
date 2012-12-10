@@ -323,11 +323,16 @@ while($row = pg_fetch_object($result)){//表示ループ開始
 	$hizuke =   TimeChange($row->hizuke);
 	$newview = $row->shinchaku_kokai;
 	
+	//文字コード設定
+	mb_language("Japanese");
+	mb_internal_encoding("utf-8");
+	//タイトルを47文字にカット
+	$title_edit = mb_substr($title,"0","47");
 	
 	echo		"<tr>";
 	echo			"	<td>$id</td>										 			\n";
 	echo			"	<td>$hizuke</td>								 			\n";
-	echo			"	<td>$title</td>								 			\n";
+	echo			"	<td>$title_edit</td>								 			\n";
 	echo			"	<td><a href='kyukambi_toroku.php?id=$id'>編集</a></td>				\n	";
 	echo			"	<td><input type='hidden' name='newview$i' value='f' />	\n";
 	echo			"	<input type='checkbox' name='newview$i' value='t'";if($newview == 't'){echo " checked='checked'";}if($title == "" or $comment == ""){echo "disabled='disabled'";}echo "></td>	\n";
