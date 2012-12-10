@@ -151,11 +151,11 @@ if($update_id != "" and $mode == "insert" ){
 				pg_query($dbconn, "COMMIT");
 				echo "<script language='JavaScript'>document.location = 'gyoji_ichiran.php';</script>";
 			}
-			else if($action == "トップ"){
-				echo "<script language='JavaScript'>window.open('../new/index.html?preview=gyoji_preview','newwindow');</script>";
+			else if($action == "トップページのプレビュー"){
+				echo "<script language='JavaScript'>window.open('../new/index.html?preview=gyoji_preview');</script>";
 			}
-			else if($action == "博物館"){
-				echo "<script language='JavaScript'>window.open('../new/museum/index.html?preview=gyoji_preview','newwindow');</script>";
+			else if($action == "博物館のご案内のプレビュー"){
+				echo "<script language='JavaScript'>window.open('../new/museum/index.html?preview=gyoji_preview');</script>";
 			}
 		}
 	
@@ -214,11 +214,15 @@ if($update_id != "" and $mode == "insert" ){
 				</div>
 				<div class="gyoji-left2">
 					<pre class="toroku1">カレンダーに公開 <?php echo "<input type='checkbox' name='k_cal' value='t'";if($calendar_kokai == 't'){echo " checked='checked'";}echo ">	\n"; ?></pre>
-					<p class="toroku1"><INPUT type="image" src= "images/gototop.gif" onclick="return stay_here();" name="action" value="トップ"></p>
+					<p class="toroku1">
+						<input type="submit" name="action" value="トップページのプレビュー" class="button-pre" onclick="return stay_here();">
+					</p>
 				</div>
 				<div class="gyoji-right2">
 					<pre class="toroku2">新着情報に公開 <?php echo "<input type='checkbox' name='k_new' value='t'";if($shinchaku_kokai == 't'){echo " checked='checked'";}echo ">	\n"; ?></pre>
-					<p class="toroku2"><INPUT type="image" src= "images/gotomuseum.gif" onclick="return stay_here();" name="action" value="博物館"></p>
+					<p class="toroku2">
+						<input type="submit" name="action" value="博物館のご案内のプレビュー" class="button-pre" onclick="return stay_here();">
+					</p>
 				</div>
 				<div class="kyotsu">
 					<p>
@@ -349,8 +353,8 @@ function gyojitoroku_minyuryoku_check(){
 }
 
 	$(function() {
-		$('textarea.title').maxlength({'feedback': title_max});
-		$('textarea.comment').maxlength({'feedback': comment_max});
+		$('textarea.title').maxlength({'feedback': <?= title_max; ?>});
+		$('textarea.comment').maxlength({'feedback': <?= comment_max; ?>});
 	});
 
 //-->
@@ -402,11 +406,11 @@ if($update_id == "" and $mode == "insert"){
 				echo "<script language='JavaScript'>document.location = 'gyoji_ichiran.php';</script>";
 			}
 		}
-		else if($action == "トップ"){
-			echo "<script language='JavaScript'>window.open('../new/index.html?preview=gyoji_preview','newwindow');</script>";
+		else if($action == "トップページのプレビュー"){
+			echo "<script language='JavaScript'>window.open('../new/index.html?preview=gyoji_preview');</script>";
 		}
-		else if($action == "博物館"){
-			echo "<script language='JavaScript'>window.open('../new/museum/index.html?preview=gyoji_preview','newwindow');</script>";
+		else if($action == "博物館のご案内のプレビュー"){
+			echo "<script language='JavaScript'>window.open('../new/museum/index.html?preview=gyoji_preview');</script>";
 		}
 	}
 	else{
