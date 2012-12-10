@@ -429,6 +429,7 @@ while($row = pg_fetch_object($result)){//表示ループ開始
 	$id = $row->id;
 	$gyoujikubun = $row->gyoji_kubun;
 	$title = $row->title;
+	$comment = $row->comment;
 	$kaishibi = TimeChange($row->kaishi_bi);
 	$syuryoubi =   TimeChange($row->shuryo_bi);
 	$danrakumei =$row->danraku_mei;
@@ -477,7 +478,7 @@ while($row = pg_fetch_object($result)){//表示ループ開始
 	echo			"	<td><input type='hidden' name='cale$i' value='f' />	\n";
 	echo			"	<input type='checkbox' name='cale$i' value='t'";if($cale == 't'){echo " checked='checked'";}echo "/></td>	\n";
 	echo			"	<td><input type='hidden' name='newview$i' value='f' />	\n";
-	echo			"	<input type='checkbox' name='newview$i' value='t'";if($newview == 't'){echo " checked='checked'";}if($title == ""){echo "disabled='disabled'";}echo "></td>	\n";
+	echo			"	<input type='checkbox' name='newview$i' value='t'";if($newview == 't'){echo " checked='checked'";}if($title == "" or $comment == ""){echo "disabled='disabled'";}echo "></td>	\n";
 	echo		"	<td><input type='checkbox' name='delete$i' value='$id'></td>		\n";
 	echo		"</tr>";
 
