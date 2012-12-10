@@ -224,6 +224,9 @@
 //データ総数取得
 	$total_data = pg_num_rows($result);
 
+//10件表示するかの判断
+	$hyojikensu = HyojiKensu($total_data,$currentpage);
+
 //何ページ目か表示
 	PageCounter($total_data,$currentpage,$offset,$hyojikensu,$_SESSION['gyoji-iti_currentpage']);
 
