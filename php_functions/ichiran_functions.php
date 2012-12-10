@@ -169,23 +169,49 @@ $tag = <<< __ikkatu__
 							}	
 	}
 
-	function AllSerchCheck(ID,START_DAY,END_DAY){
+		function AllSerchCheck(ID,START_DAY,END_DAY){
 
-		var chk = document.getElementsByName(START_DAY);
-		if(isZen(chk[0].value)){
-			//正常時の処理なし
-		}else{
-			alert('開始日は半角数字、日付形式以外無効です。');
+var chk = document.getElementsByName(START_DAY);
+	if(chk[0].value != ""){
+		if(isZen(chk[0].value)==false){
+			alert('開始日は半角数字、日付形式(oooo/oo/oo)以外無効です。');
 			return false;
 		}
 
-		var chk = document.getElementsByName(END_DAY);
-		if(isZen(chk[0].value)){
-			//正常時の処理なし
-		}else{
-			alert('終了日は半角数字、日付形式以外無効です。');
+
+		if(ckDateFormat(chk[0].value)==false){
+			alert('開始日は日付形式(oooo/oo/oo)で入力してください。');
 			return false;
 		}
+
+
+		if(ckDate(chk[0].value)==false){
+			alert('開始日はありえない日時です。');
+			return false;
+		}
+	}
+
+
+	var chk = document.getElementsByName(END_DAY);
+	if(chk[0].value != ""){
+		if(isZen(chk[0].value)==false){
+			alert('終了日は半角数字、日付形式(oooo/oo/oo)以外無効です。');
+			return false;
+		}
+
+
+		if(ckDateFormat(chk[0].value)==false){
+			alert('終了日は日付形式(oooo/oo/oo)で入力してください。');
+			return false;
+		}
+
+
+		if(ckDate(chk[0].value)==false){
+			alert('終了日はありえない日時です。');
+			return false;
+		}
+	}
+
 
 	if(Id_Serch_check(ID) == false){
 			return false;
@@ -211,7 +237,7 @@ $tag = <<< __ikkatu__
 
 		}
 
-  function isZen(str){
+	function isZen(str){
 		for(var i=0; i<str.length; i++){
 			var len=escape(str.charAt(i)).length;
 			if(len>=4){
@@ -221,6 +247,34 @@ $tag = <<< __ikkatu__
 			//正常時の処理なし
 		return true;
 	}
+
+		//yyyy/mm/dd以外はじくがありえない日付が通ってしまう
+	function ckDateFormat(str) {
+		// 正規表現による書式チェック
+		if(!str.match(/^([0-9]{4})\/(0[1-9]|1[012])\/(0[1-9]|[12][0-9]|3[01])$/)){
+			return false;
+		}
+	}
+
+	function ckDate(str) {
+		var vYear = str.substr(0, 4) - 0;
+		var vMonth = str.substr(5, 2) - 1; // Javascriptは、0-11で表現
+		var vDay = str.substr(8, 2) - 0;
+		// 月,日の妥当性チェック
+		if(vMonth >= 0 && vMonth <= 11 && vDay >= 1 && vDay <= 31){
+			var vDt = new Date(vYear, vMonth, vDay);
+			if(isNaN(vDt)){
+				return false;
+			}else if(vDt.getFullYear() == vYear && vDt.getMonth() == vMonth && vDt.getDate() == vDay){
+				return true;
+			}else{
+				return false;
+			}
+		}else{
+			return false;
+		}
+	}
+
 
 	function kakunin(){
 		if(confirm("更新/削除を行いますか？")== true){

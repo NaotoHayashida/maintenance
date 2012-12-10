@@ -311,7 +311,7 @@ function gyojitoroku_minyuryoku_check(){
 			var anchor_chk = minyuryoku_check("anchor");
 
 			if(anchor_chk == false){
-				alert('アンカーが未入力です。');
+				alert('段落名が未入力です。');
 				return false;
 			}
 		}
@@ -345,7 +345,7 @@ function gyojitoroku_minyuryoku_check(){
 			var anchor_chk = minyuryoku_check("anchor");
 
 			if(anchor_chk == false){
-				alert('アンカーが未入力です。');
+				alert('段落名が未入力です。');
 				return false;
 			}
 		}
