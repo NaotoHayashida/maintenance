@@ -436,6 +436,11 @@ while($row = pg_fetch_object($result)){//表示ループ開始
 	$cale = $row->calendar_kokai;
 	$newview = $row->shinchaku_kokai;
 	
+	//文字コード設定
+	mb_language("Japanese");
+	mb_internal_encoding("utf-8");
+	//タイトルを17文字にカット
+	$title_edit = mb_substr($title,"0","17");
 	
 	echo		"<tr>";
 	echo			"<td><input type='radio' name='ID_change' value='$i'";
@@ -470,7 +475,7 @@ while($row = pg_fetch_object($result)){//表示ループ開始
 	echo "></td>";
 	echo			"	<td>$id</td>										 			\n";
 	echo			"	<td>".gyojiKubunNameGet($gyoujikubun)."</td>									 			\n";
-	echo			"	<td>$title</td>								 			\n";
+	echo			"	<td>$title_edit</td>								 			\n";
 	echo			"	<td>$kaishibi</td>								 			\n";
 	echo			"	<td>$syuryoubi</td>								 			\n";
 	echo			"	<td>$danrakumei</td>								     			\n";
