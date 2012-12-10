@@ -319,6 +319,7 @@ $i = 1;
 while($row = pg_fetch_object($result)){//表示ループ開始
 	$id = $row->id;
 	$title = $row->title;
+	$comment = $row->comment;
 	$hizuke =   TimeChange($row->hizuke);
 	$newview = $row->shinchaku_kokai;
 	
@@ -329,7 +330,7 @@ while($row = pg_fetch_object($result)){//表示ループ開始
 	echo			"	<td>$title</td>								 			\n";
 	echo			"	<td><a href='kyukambi_toroku.php?id=$id'>編集</a></td>				\n	";
 	echo			"	<td><input type='hidden' name='newview$i' value='f' />	\n";
-	echo			"	<input type='checkbox' name='newview$i' value='t'";if($newview == 't'){echo " checked='checked'";}echo "></td>	\n";
+	echo			"	<input type='checkbox' name='newview$i' value='t'";if($newview == 't'){echo " checked='checked'";}if($title == "" or $comment == ""){echo "disabled='disabled'";}echo "></td>	\n";
 	echo		"	<td><input type='checkbox' name='delete$i' value='$id'></td>		\n";
 	echo		"</tr>";
 
