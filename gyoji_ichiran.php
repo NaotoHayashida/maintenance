@@ -442,18 +442,30 @@ while($row = pg_fetch_object($result)){//表示ループ開始
 	if($i ==1 ){
 		echo " checked";
 	}
+	
 	//↓ボタンが押された時にチェックを入れる処理
-	if($_POST["ID_change"]+1==$i){
-		if($mode == "↓"){
+	if($mode == "↓" ){
+	
+		if($_POST["ID_change"]+1==$i){
+		
 			echo " checked";
 		}
 	}
+	
 	//↑ボタンが押された時にチェックを入れる処理
-	if($_POST["ID_change"]-1==$i){
-		if($mode == "↑"){
+	if($mode == "↑"){	
+		//通常処理
+		if($_POST["ID_change"]-1==$i){
+		
+			echo " checked";
+		}
+		//ページを跨いだときの処理
+		if($_POST["ID_change"]+9==$i){
+		
 			echo " checked";
 		}
 	}
+	
 	echo "></td>";
 	echo			"	<td>$id</td>										 			\n";
 	echo			"	<td>".gyojiKubunNameGet($gyoujikubun)."</td>									 			\n";
