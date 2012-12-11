@@ -160,14 +160,21 @@ $tag = <<< __ikkatu__
 		named += chk;
 		named += i;
 		var chkTF = document.getElementsByName(named);
+		
 		if(chk == 'delete'){
 			chkTF[0].checked = chk_ALLTF[0].checked;
 							}
 		else{
-			chkTF[1].checked = chk_ALLTF[0].checked;
-							}	
-							}	
-	}
+		
+			if(chkTF[1].disabled == chk_ALLTF[0].disabled){
+			
+				chkTF[1].checked = chk_ALLTF[0].checked;
+	
+			}
+		}
+
+	}	
+  }
 
 		function AllSerchCheck(ID,START_DAY,END_DAY){
 
