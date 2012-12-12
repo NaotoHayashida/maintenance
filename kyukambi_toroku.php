@@ -285,7 +285,7 @@ if($update_id == "" and $mode == "insert"){
 	}
 	else{
 
-		echo "そのデータは既に登録済みです。";
+		echo "<p style='color:red; font-weight: bold;'>そのデータは既に登録済みです。</p>";
 
 	}
 }

@@ -414,7 +414,7 @@ if($update_id == "" and $mode == "insert"){
 		}
 	}
 	else{
-		echo "同じ行事区分で、期間が重複しているデーターが存在するので登録できません。<br>";
+		echo "<p style='color:red; font-weight: bold;'>同じ行事区分で、期間が重複しているデーターが存在するので登録できません。</p>";
 
 	}
 }
