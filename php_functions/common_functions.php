@@ -30,26 +30,30 @@ function sentoTagCreate($pageName)
 <script type="text/javascript"> <!--
 jQuery( function() {
 
+var str = $('#jquery-ui-datepicker-to').val();
+
+
 	$("#jquery-ui-datepicker-to").change(function(){
-   
-		if("" == $('#jquery-ui-datepicker-to').val()){
+		
+			if(!str.match(/^(\w| |'|,|&)+$/)){
 	   
-			$('#jquery-ui-datepicker-from').datepicker('option', 'maxDate', '');	  
-	  	  
-		}
+				$('#jquery-ui-datepicker-from').datepicker('option', 'maxDate', '');
+					  
+			}
 	   
 	});   
 
 	   
 	$("#jquery-ui-datepicker-from").change(function(){
 
-		if("" == $('#jquery-ui-datepicker-from').val()){
+		if(!str.match(/^(\w| |'|,|&)+$/)){
 			  
-			$('#jquery-ui-datepicker-to').datepicker('option', 'minDate', '');
-
-		}		  
+				$('#jquery-ui-datepicker-to').datepicker('option', 'minDate', '');
+			
+			}
+	  
 			  
-	});			  
+	});	
 
 	var dates = jQuery( '#jquery-ui-datepicker-from, #jquery-ui-datepicker-to' ) . datepicker( {
 		showAnim: 'clip',
