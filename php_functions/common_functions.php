@@ -30,30 +30,25 @@ function sentoTagCreate($pageName)
 <script type="text/javascript"> <!--
 jQuery( function() {
 
-var str = $('#jquery-ui-datepicker-to').val();
+$("#jquery-ui-datepicker-to").keyup(function(){
+	if($('form input[name="syuryobi_search"]').val() == ''){
+		$('#jquery-ui-datepicker-from').datepicker('option', 'maxDate', '');
+		$('#jquery-ui-datepicker-to').datepicker('hide');
+	}else if($('form input[name="syuryobi_search"]').val().match(/^([0-9]{4})\/(0[1-9]|1[012])\/(0[1-9]|[12][0-9]|3[01])$/)){
+		var str=$('form input[name="syuryobi_search"]').val();
+		$('#jquery-ui-datepicker-from').datepicker('option', 'maxDate',  new Date(str));
+	}
+});   
 
-
-	$("#jquery-ui-datepicker-to").change(function(){
-		
-			if(!str.match(/^(\w| |'|,|&)+$/)){
-	   
-				$('#jquery-ui-datepicker-from').datepicker('option', 'maxDate', '');
-					  
-			}
-	   
-	});   
-
-	   
-	$("#jquery-ui-datepicker-from").change(function(){
-
-		if(!str.match(/^(\w| |'|,|&)+$/)){
-			  
-				$('#jquery-ui-datepicker-to').datepicker('option', 'minDate', '');
-			
-			}
-	  
-			  
-	});	
+$("#jquery-ui-datepicker-from").keyup(function(){
+	if($('form input[name="kaishibi_search"]').val() == ''){
+		$('#jquery-ui-datepicker-to').datepicker('option', 'minDate', '');
+		$('#jquery-ui-datepicker-from').datepicker('hide');
+	}else if($('form input[name="kaishibi_search"]').val().match(/^([0-9]{4})\/(0[1-9]|1[012])\/(0[1-9]|[12][0-9]|3[01])$/)){
+		var str=$('form input[name="kaishibi_search"]').val();
+		$('#jquery-ui-datepicker-to').datepicker('option', 'minDate', new Date(str));
+	}
+});   
 
 	var dates = jQuery( '#jquery-ui-datepicker-from, #jquery-ui-datepicker-to' ) . datepicker( {
 		showAnim: 'clip',
