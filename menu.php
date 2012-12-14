@@ -1,6 +1,6 @@
 <?PHP
 	require_once "php_functions/common_functions.php";
-	echo sentoTagCreate("管理メニュー");
+	echo menu_sentoTagCreate("管理メニュー");
 
 echo <<< __menu__
 		

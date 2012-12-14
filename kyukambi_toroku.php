@@ -2,7 +2,7 @@
 	session_start();
 	require_once "php_functions/common_functions.php";
 	require_once "php_functions/ichiran_functions.php";
-	echo sentoTagCreate("休館日登録");
+	echo menu_sentoTagCreate("休館日登録");
 	echo "<body>\n";
 	$update_id = $_GET["id"];
 	$mode = $_POST["mode"];

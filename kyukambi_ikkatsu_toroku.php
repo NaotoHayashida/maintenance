@@ -246,7 +246,7 @@
 
 <?php
 	$pageName = "休館日一括登録";
-	echo sentoTagCreate($pageName);
+	echo sentoTagCreate($pageName,kaishibi,shuryobi);
 ?>
 
  

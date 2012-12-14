@@ -2,7 +2,7 @@
 	session_start();
 	require_once "php_functions/common_functions.php";
 	require_once "php_functions/ichiran_functions.php";
-	echo sentoTagCreate("行事一覧");
+	echo sentoTagCreate("行事一覧",kaishibi_search,syuryobi_search);
 	text();
 //	$_SESSION['gyoji-iti_ID'] = NULL;
 //DBのどこのテーブルか指定する
