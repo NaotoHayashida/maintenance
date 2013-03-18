@@ -1,7 +1,9 @@
 <?php
 	session_start();
+	//php_functionの呼び出し
 	require_once "php_functions/common_functions.php";
 	require_once "php_functions/ichiran_functions.php";
+	//HTMLの先頭タグの呼び出し
 	echo menu_sentoTagCreate("休館日登録");
 	echo "<body>\n";
 	$update_id = $_GET["id"];
@@ -94,21 +96,23 @@ if($update_id != "" and $mode == "insert" ){
 	}
 	//エラーがなかった場合　updateを実行する
 	if($error == 0){
-		if($action == "実行"){
+		if($action == "実行"){	
+			//SQL文
 			$sql = 	"update kyukambi set ".
 			"title = '" . $title . "',comment = '" . $comment . "'," .
 			"hizuke = '" . $hizuke . "', shinchaku_kokai = '" . $k_new . "',".
 			"sakusei_sha = '" . $_SERVER['REMOTE_USER'] . "'".
 			"where id = " . $update_id . ";";
 	//			$_SESSION['gyoji-iti_ID'] 			= $update_id;
+			//ﾄﾗﾝｻﾞｸｼｮﾝ//
 			pg_query($dbconn, "BEGIN"); //トランザクション開始
 			$result = pg_query($dbconn, $sql);
 			if ($result == false){
 
-				pg_query($dbconn, "ROLLBACK");
+				pg_query($dbconn, "ROLLBACK");//データの巻き戻し
 				exit(dbErrorMessageCreate("DB登録に失敗しました。", $sql, $dbconn));
 			}
-			pg_query($dbconn, "COMMIT");
+			pg_query($dbconn, "COMMIT");//ﾄﾗﾝｻﾞｸｼｮﾝ終了宣言
 			echo "<script language='JavaScript'>document.location = 'kyukambi_ichiran.php';</script>";
 		}
 		else if($action == "トップページのプレビュー"){
@@ -134,7 +138,8 @@ if($update_id != "" and $mode == "insert" ){
 					<p class="toroku1">タイトル</p>
 				</div>
 				<div class="gyoji-right1">
-<!--				<p class="toroku2"><input type="text" name="title" size="30" maxlength="40" value="<?= $h_title ?>"/></p>-->
+<!--				<p class="toroku2">
+					<input type="text" name="title" size="30" maxlength="40" value="<?= $h_title ?>"/></p>-->
 					<p class="toroku2"><textarea cols="40" rows="4" maxlength="<?= title_max; ?>" name="title" class="title"><?= $h_title; ?></textarea></p>
 				</div>
 				<div class="gyoji-left1">

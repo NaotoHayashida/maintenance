@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 	require_once "php_functions/common_functions.php";
 
 	$fromDay = null;
@@ -11,7 +11,7 @@
 	{
 		global $fromDay, $toDay;
 		
-		//実行ボタン押下時の処理
+		//実行ボタン押した時の処理
 		$fromDay = $_POST["kaishibi"];
 		$toDay   = $_POST["shuryobi"];
 
@@ -52,7 +52,6 @@
 					$nextDay = getNextDay($nextDay);
 				}
 				
-				$kyukambiArray[] = $nextDay;
 			}
 		
 			$tuesday = getNextTuesday($tuesday);
@@ -270,7 +269,7 @@
 		
 		return true;
 	}
-// -->
+// -->  
 </script>
 
 
