@@ -9,25 +9,29 @@
 function sentoTagCreate($pageName,$form_fromName,$form_toName)
 {
 	$tag = <<< __sentoTag__
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-"http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ja">
+
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>{$pageName}</title>
-<meta name="robots" content="none" />
-<meta http-equiv="Content-Style-Type" content="text/css" />
-<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="none">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
 <meta http-equiv="imagetoolbar" content="false" />
+
 <script type="text/javascript" src="scripts/maintenance.js"></script>
-<link rel="stylesheet" href="css/maintenance.css" type="text/css" />
-<link href="css/smoothness/jquery-ui-1.9.0.custom.css" rel="stylesheet">
+
+<link rel="stylesheet" href="css/maintenance.css" type="text/css">
+<link rel="stylesheet" href="css/smoothness/jquery-ui-1.9.0.custom.css">
 <link rel="stylesheet" href="css/jquery.ui.all.css">
+
 <script type="text/javascript" src="js/jquery-1.8.2.js"></script>
 <script type="text/javascript" src="js/jquery-ui-1.8.12.custom.min.js"></script>
 <script type="text/javascript" src="js/jquery.ui.datepicker-ja.js"></script>
-<script src="js/jquery.maxlength.js" type="text/javascript"></script>
-<script type="text/javascript"> <!--
+<script type="text/javascript" src="js/jquery.maxlength.js"></script>
+<script type="text/javascript">
+ <!--
 jQuery( function() {
 
 $("#jquery-ui-datepicker-to").keyup(function(){
@@ -38,7 +42,7 @@ $("#jquery-ui-datepicker-to").keyup(function(){
 		var str=$('form input[name="{$form_toName}"]').val();
 		$('#jquery-ui-datepicker-from').datepicker('option', 'maxDate',  new Date(str));
 	}
-});   
+});
 
 $("#jquery-ui-datepicker-from").keyup(function(){
 	if($('form input[name="{$form_fromName}"]').val() == ''){
@@ -48,7 +52,7 @@ $("#jquery-ui-datepicker-from").keyup(function(){
 		var str=$('form input[name="{$form_fromName}"]').val();
 		$('#jquery-ui-datepicker-to').datepicker('option', 'minDate', new Date(str));
 	}
-});   
+});
 
 	var dates = jQuery( '#jquery-ui-datepicker-from, #jquery-ui-datepicker-to' ) . datepicker( {
 		showAnim: 'clip',
@@ -68,14 +72,15 @@ $("#jquery-ui-datepicker-from").keyup(function(){
 } );
 
 $(function(){
-    $('#datepicker').datepicker();
+	$('#datepicker').datepicker();
 });
-// -->
+ -->
 </script>
 </head>
+
 <body>
 <noscript>
-<h2><font color=red>JavaScriptを有効にしてから本ページを再表示してください。</font></h2>
+	<h2><font color=red>JavaScriptを有効にしてから本ページを再表示してください。</font></h2>
 </noscript>
 __sentoTag__;
 
@@ -92,25 +97,30 @@ __sentoTag__;
 function menu_sentoTagCreate($pageName)
 {
 	$tag = <<< __sentoTag__
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-"http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ja">
+
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>{$pageName}</title>
-<meta name="robots" content="none" />
-<meta http-equiv="Content-Style-Type" content="text/css" />
-<meta http-equiv="Content-Script-Type" content="text/javascript" />
-<meta http-equiv="imagetoolbar" content="false" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="none">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta http-equiv="imagetoolbar" content="false">
+
 <script type="text/javascript" src="scripts/maintenance.js"></script>
-<link rel="stylesheet" href="css/maintenance.css" type="text/css" />
-<link href="css/smoothness/jquery-ui-1.9.0.custom.css" rel="stylesheet">
+
+<link rel="stylesheet" href="css/maintenance.css" type="text/css">
+<link rel="stylesheet" href="css/smoothness/jquery-ui-1.9.0.custom.css">
 <link rel="stylesheet" href="css/jquery.ui.all.css">
+
 <script type="text/javascript" src="js/jquery-1.8.2.js"></script>
 <script type="text/javascript" src="js/jquery-ui-1.8.12.custom.min.js"></script>
 <script type="text/javascript" src="js/jquery.ui.datepicker-ja.js"></script>
-<script src="js/jquery.maxlength.js" type="text/javascript"></script>
-<script type="text/javascript"> <!--
+<script type="text/javascript" src="js/jquery.maxlength.js"></script>
+
+<script type="text/javascript">
+ <!--
 jQuery( function() {
 
 
@@ -134,12 +144,13 @@ jQuery( function() {
 $(function(){
     $('#datepicker').datepicker();
 });
-// -->
+ -->
 </script>
 </head>
+
 <body>
 <noscript>
-<h2><font color=red>JavaScriptを有効にしてから本ページを再表示してください。</font></h2>
+	<h2><font color=red>JavaScriptを有効にしてから本ページを再表示してください。</font></h2>
 </noscript>
 __sentoTag__;
 

@@ -264,10 +264,10 @@ echo <<< __searchbar__
 	<div class="header">
 		<h2>行事一覧</h2>
 	</div>
-			<div class="kyotsu">
-				<p><a href="menu.php">管理メニュー</a></p>
-				<p><a href="gyoji_toroku.php">新規登録</a></p>
-			</div>
+	<div class="kyotsu">
+		<p><a href="menu.php">管理メニュー</a></p>
+		<p><a href="gyoji_toroku.php">新規登録</a></p>
+	</div>
 
 __searchbar__;
 
@@ -333,20 +333,19 @@ function search(){
 echo <<< __searchbar__
 <form name="searchbar" method="POST" OnSubmit="return AllSerchCheck('IDsearch','kaishibi_search','syuryobi_search')">
 <div class="Kensaku-box">
-<table class ="table1-t1">
-	<tbody>
-		<tr>
-			<th rowspan=2 style='background=#663300' style='color=#F0E8D8'>検索</th>
-			<th>ID</th>
-			<th>行事区分</th>
-			<th>タイトル</th>
-			<th colspan="3">期間</th>
-			<th>カレンダー</th>
-			<th>新着</th>
-
-		</tr>
+	<table class ="table1-t1">
+		<tbody>
+			<tr>
+				<th rowspan=2 style='background=#663300' style='color=#F0E8D8'>検索</th>
+				<th>ID</th>
+				<th>行事区分</th>
+				<th>タイトル</th>
+				<th colspan="3">期間</th>
+				<th>カレンダー</th>
+				<th>新着</th>
+			</tr>
 __searchbar__;
-echo			"<td><input type='text' size='4' maxlength='4' name='IDsearch'width='10px' value='{$_SESSION['gyoji-iti_ID']}'></td>";
+echo			"<td><input type='text' size='4' maxlength='4' name='IDsearch' width='10px' value='{$_SESSION['gyoji-iti_ID']}'></td>";
 echo			"<td><select name='gyojisearch' width='30px' value='{$_SESSION['gyoji-iti_gyouji_kubun']}'>";
 
 								echo "<option value=''"; if($_SESSION['gyoji-iti_gyouji_kubun'] == ''){echo " selected";}echo "> </option>\n";
@@ -520,5 +519,5 @@ function send_check(){
         return true  
     }  
 }  
-// -->  
+ -->  
 </script>
