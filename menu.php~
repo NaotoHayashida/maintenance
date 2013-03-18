@@ -1,8 +1,8 @@
 <?PHP
 	require_once "php_functions/common_functions.php";
-echo menu_sentoTagCreate("管理メニュー");?>
+	echo menu_sentoTagCreate("管理メニュー");
 
-
+echo <<< __menu__
 		
 		<div class="all">
 			<div class="header">
@@ -29,3 +29,6 @@ echo menu_sentoTagCreate("管理メニュー");?>
 	</body>
 </html>
 
+__menu__;
+
+?>

@@ -1,0 +1,288 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>モックアップ：行事登録</title>
+<meta name="robots" content="none" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta http-equiv="imagetoolbar" content="false" />
+
+<!-- 未入力文字列、日付、閏年の正確性判断に必要なJavaScript　保守推奨--------------------------- -->
+<script type="text/javascript" src="../scripts/maintenance.js"></script>
+<!-- ------------------------------------------------------------------------------------------- -->
+<!-- アウトプット全体のcss---------------------------------------------------------------------- -->
+<link rel="stylesheet" href="../css/maintenance.css" type="text/css" />
+<!-- ------------------------------------------------------------------------------------------- -->
+<!-- jQuery-ui-1.9.0.custom.jsのcss　中身はjQuery構文で記述されている--------------------------- -->
+<link href="../css/smoothness/jquery-ui-1.9.0.custom.css" rel="stylesheet">
+<!-- ------------------------------------------------------------------------------------------- -->
+<!-- jQueryで見た目を書き換えるためのcssファイル　保守推奨-------------------------------------- -->
+<link rel="stylesheet" href="../css/jquery.ui.all.css">
+<!-- ------------------------------------------------------------------------------------------- -->
+<!-- ここからJavaScriptファイル----------------------------------------------------------------- -->
+<script type="text/javascript" src="../js/jquery-1.8.2.js"></script>
+<script type="text/javascript" src="../js/jquery-ui-1.8.12.custom.min.js"></script>
+<script type="text/javascript" src="../js/jquery.ui.datepicker-ja.js"></script>
+<script src="../js/jquery.maxlength.js" type="text/javascript"></script>
+<!-- JavaScriptファイルここから----------------------------------------------------------------- -->
+<script type="text/javascript">
+<!-- 
+ $(function(){
+  var max =80;
+	$('textarea.comment').bind('keydown keyup keypress change',function(){
+		var commentValueLength = $(this).val().length;
+    var countdown= (max)-(commentValueLength);
+		   $('.countcomment').html(countdown);
+   if(countdown<0){$('.comment').css({background:'#ffcccc'});
+   $('.countcomment').html("入力文字数をオーバーしています！");
+   $('.button').attr('disabled','disabled');
+   $('.button-pre').attr('disabled','disabled');
+   $('.title').attr('disabled','disabled');
+   }
+   else{$('.comment').css({background:'#ffffff'});
+   $('.button').removeAttr('disabled');
+   $('.button-pre').removeAttr('disabled');
+   $('.title').removeAttr('disabled');
+   }
+});
+   	$('textarea.title').bind('keydown keyup keypress change',function(){
+		var titleValueLength = $(this).val().length;
+    var countdowntitle= (max)-(titleValueLength);
+		   $('.counttitle').html(countdowntitle);
+   if(countdowntitle<0){$('.title').css({background:'#ffcccc'});
+   $('.counttitle').html("入力文字数をオーバーしています！");
+   $('.button').attr('disabled','disabled');
+   $('.button-pre').attr('disabled','disabled');
+   $('.comment').attr('disabled','disabled');
+   }
+   else{$('.title').css({background:'#ffffff'});
+   $('.button').removeAttr('disabled');
+   $('.button-pre').removeAttr('disabled');
+   $('.comment').removeAttr('disabled');
+   }
+
+	});
+});
+ -->
+</script>
+<!-- JavaScriptファイルここまで----------------------------------------------------------------- -->
+</head>
+<body>
+	<noscript>
+		<h2><font color=red>JavaScriptを有効にしてから本ページを再表示してください。</font></h2>
+	</noscript>
+
+	<div class="all">
+		<form action="" id='form' name="form" method="POST">
+
+			<div class="header">
+				<h2>行事登録</h2>
+			</div>
+
+			<div class="kyotsu">
+				<p><a href="menu.php">管理メニュー</a></p>
+				<p><a href="gyoji_ichiran.php">行事一覧</a></p>
+			</div>
+
+			<div class="gyoji-left1">
+				<p class="toroku1">行事区分</p>
+			</div>
+
+			<div class="gyoji-right1">
+				<p class="toroku2">
+					<select name="gyojikubun" >
+						<option value='' selected> </option>
+							<option value='1'>特別展示</option>
+							<option value='2'>絵はがき教室</option>
+							<option value='3'>イベント</option>
+					</select>
+				</p>
+			</div>
+
+			<div class="gyoji-left1">
+				<p class="toroku1" >タイトル</p>
+			</div>
+
+			<div class="gyoji-right1">
+<!--			<p class="toroku2"><input type="text" name="title" size="30" maxlength="40" value=""/></p>-->
+				<p class="toroku2"><textarea cols="40" rows="4"  name="title" class="title"></textarea></p>	
+		<span class="counttitle">80</span>
+			</div>
+
+			<div class="gyoji-left1">
+				<p class="toroku1">コメント</p>
+			</div>
+
+			<div class="gyoji-right1">
+				<p class="toroku2"><textarea cols="40" rows="4"  name="comment" class="comment"></textarea></p>
+		<span class="countcomment">80</span>
+
+
+	
+
+</div>
+
+			<div class="gyoji-left1">
+				<p class="toroku1" >段落名</p>
+			</div>
+
+			<div class="gyoji-right1">
+				<p class="toroku2"><input type="text" name="anchor" size="30" value=""/></p>
+			</div>
+
+			<div class="gyoji-left1">
+				<p class="toroku1">期間</p>
+			</div>
+
+			<div class="gyoji-right1">
+				<p class="toroku2"><input type="text" name="kaishibi" maxlength='10' size="10" id="jquery-ui-datepicker-from" value="" />～<input type="text" name="shuryobi" maxlength='10' size="10" id="jquery-ui-datepicker-to" value=""/></p>
+			</div>
+
+			<div class="gyoji-left2">
+				<pre class="toroku1">カレンダーに公開 <input type='checkbox' name='k_cal' value='t'></pre>
+				<p class="toroku1">
+					<input type="submit" name="action" value="トップページのプレビュー" class="button-pre" onclick="return stay_here();">
+				</p>
+			</div>
+
+			<div class="gyoji-right2">
+				<pre class="toroku2">新着情報に公開 <input type='checkbox' name='k_new' value='t'></pre>
+				<p class="toroku2">
+					<input type="submit" name="action" value="博物館のご案内のプレビュー" class="button-pre" onclick="return stay_here();">
+				</p>
+			</div>
+
+			<div class="kyotsu">
+				<p>
+					<input type="hidden" name="preview" value="gyoji_preview">
+					<input type="hidden" name="mode" value="insert">
+					<input type="submit" name="action" value="実行" class="button" onclick="return stay_here();">
+				</p>
+			</div>
+
+		</form>
+	</div>
+<input name="a" type="button" value="hoge"  />
+</body>
+</html>
+
+<!-- 以下未入力、未選択箇所の判定 -------------------------------------------------------------- -->
+<script language="JavaScript">
+<!-- 
+function stay_here(){
+	if (gyojitoroku_minyuryoku_check() == false) return false;
+	form.target = "";
+	document.getElementById('form').action = '';
+}
+
+function goToHakubutsukan_preview(){
+	if (gyojitoroku_minyuryoku_check() == false) return false;
+	form.target = "newwindow";
+	window.open("","newwindow");
+	document.getElementById('form').action = 'test1.php';//../museum/index.php
+	document.getElementById('submit').click();
+}
+
+function goToTop_preview(){
+	if (gyojitoroku_minyuryoku_check() == false) return false;
+	form.target = "newwindow";
+	window.open("","newwindow");
+	document.getElementById('form').action = 'test2.php';//../index.php
+	document.getElementById('submit').click();
+}
+
+function gyojitoroku_minyuryoku_check(){
+//	var k_new = document.form.k_new.checked;
+//	var k_cal = document.form.k_cal.checked;
+	
+	var gyojikubun_chk = minyuryoku_check("gyojikubun");
+
+	if(gyojikubun_chk == false){
+		alert('行事区分が未入力です。');
+		return false;
+	}
+
+	var kaishibi_chk = minyuryoku_check("kaishibi");
+
+	if(kaishibi_chk == false){
+		alert('開始日が未入力です。');
+		return false;
+	}
+
+	var shuryobi_chk = minyuryoku_check("shuryobi");
+
+	if(shuryobi_chk == false){
+		alert('終了日が未入力です。');
+		return false;
+	}
+
+	var kaishibi = document.form.kaishibi.value;
+	var shuryobi = document.form.shuryobi.value;
+	var kikan_chk = isValidPeriod(kaishibi,shuryobi,true);
+
+	if(kikan_chk == false){
+		alert('期間に誤りがあります。');
+		return false;
+
+	}
+
+	var k_new = document.form.k_new.checked;
+	var k_cal = document.form.k_cal.checked;
+
+	if(k_new == true && k_cal == false){
+		alert('カレンダー非公開、新着情報公開という設定はできません。');
+		return false;
+	}
+
+	if(k_new == false ){
+		if(document.form.gyojikubun.value != 2){
+
+			var anchor_chk = minyuryoku_check("anchor");
+
+			if(anchor_chk == false){
+				alert('段落名が未入力です。');
+				return false;
+			}
+		}
+		else{
+			var comment_chk = minyuryoku_check("comment");
+
+			if(comment_chk == false){
+				alert('コメントが未入力です。');
+				return false;
+			}
+		}
+		
+	}
+	if(k_new == true && k_cal == true){
+		var title_chk = minyuryoku_check("title");
+
+		if(title_chk == false){
+			alert('タイトルが未入力です。');
+			return false;
+		}
+
+		var comment_chk = minyuryoku_check("comment");
+
+		if(comment_chk == false){
+			alert('コメントが未入力です。');
+			return false;
+		}
+
+		if(document.form.gyojikubun.value != 2){
+
+			var anchor_chk = minyuryoku_check("anchor");
+
+			if(anchor_chk == false){
+				alert('段落名が未入力です。');
+				return false;
+			}
+		}
+	}
+}
+
+
+ -->
+</script>
