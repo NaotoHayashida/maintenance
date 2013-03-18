@@ -6,27 +6,27 @@
 	echo "<body>\n";
 	$update_id = $_GET["id"];
 	$mode = $_POST["mode"];
-	$action = $_POST["action"];													//実行条件判断
-	$gyojikubun =  $_POST["gyojikubun"];										//行事区分
-	$title = $_POST["title"];													//タイトル
-	$comment = $_POST["comment"];												//コメント
-	$anchor = $_POST["anchor"];													//アンカー
-	$kaishibi = $_POST["kaishibi"];												//期間の開始日
-	$shuryobi = $_POST["shuryobi"];												//期間の終了日
-	define("title_max",80);														//タイトル文字数制限
-	define("comment_max",80);													//コメント文字数制限
+	$action = $_POST["action"];										//実行条件判断
+	$gyojikubun =  $_POST["gyojikubun"];								//行事区分
+	$title = $_POST["title"];										//タイトル
+	$comment = $_POST["comment"];										//コメント
+	$anchor = $_POST["anchor"];										//アンカー
+	$kaishibi = $_POST["kaishibi"];									//期間の開始日
+	$shuryobi = $_POST["shuryobi"];									//期間の終了日
+	define("title_max",80);											//タイトル文字数制限
+	define("comment_max",80);										//コメント文字数制限
 
 if(isset($_POST["k_cal"])){
-	$k_cal = 1;																//カレンダーに公開
+	$k_cal = 1;													//カレンダーに公開
 }
 else{
-	$k_cal = 0;																//カレンダーに公開
+	$k_cal = 0;													//カレンダーに公開
 }
 if(isset($_POST["k_new"])){
-	$k_new = 1;																//新着情報に公開
+	$k_new = 1;													//新着情報に公開
 }
 else{
-	$k_new = 0;																//新着情報に公開
+	$k_new = 0;													//新着情報に公開
 }
 
 //リロード時にデータを反映

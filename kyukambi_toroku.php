@@ -8,18 +8,18 @@
 	echo "<body>\n";
 	$update_id = $_GET["id"];
 	$mode = $_POST["mode"];
-	$action = $_POST["action"];													//実行条件判断
-	$title = $_POST["title"];													//タイトル
-	$comment = $_POST["comment"];												//コメント
-	$hizuke = $_POST["hizuke"];													//日付
-	define("title_max",80);														//タイトル文字数制限
-	define("comment_max",80);													//コメント文字数制限
+	$action = $_POST["action"];										//実行条件判断
+	$title = $_POST["title"];										//タイトル
+	$comment = $_POST["comment"];										//コメント
+	$hizuke = $_POST["hizuke"];										//日付
+	define("title_max",80);											//タイトル文字数制限
+	define("comment_max",80);										//コメント文字数制限
 
 if(isset($_POST["k_new"])){
-	$k_new = 1;																//新着情報に公開
+	$k_new = 1;													//新着情報に公開
 }
 else{
-	$k_new = 0;																//新着情報に公開
+	$k_new = 0;													//新着情報に公開
 }
 
 //リロード時にデータを反映
@@ -89,7 +89,7 @@ if($update_id != "" and $mode == "insert" ){
 		exit(dbErrorMessageCreate("DB抽出に失敗しました。", $sql, $dbconn));
 
 	}
-							
+
 	if(pg_num_rows($result) != 0){
 		//echo "そのデータは既に登録済みです。update<br>";
 		$error = 1;
