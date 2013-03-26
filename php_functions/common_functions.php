@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /****************************************************************
 * 機　能： htmlの先頭タグを返却します。
 * 　　　　 （パラメータのページ名称はtitleタグに埋め込みます）
@@ -26,7 +26,7 @@ function sentoTagCreate($pageName,$form_fromName,$form_toName)
 <script type="text/javascript" src="js/jquery-1.8.2.js"></script>
 <script type="text/javascript" src="js/jquery-ui-1.8.12.custom.min.js"></script>
 <script type="text/javascript" src="js/jquery.ui.datepicker-ja.js"></script>
-<script src="js/jquery.maxlength.js" type="text/javascript"></script>
+<script src="js/textlength.js" type="text/javascript"></script>
 <script type="text/javascript"> <!--
 jQuery( function() {
 
@@ -109,7 +109,7 @@ function menu_sentoTagCreate($pageName)
 <script type="text/javascript" src="js/jquery-1.8.2.js"></script>
 <script type="text/javascript" src="js/jquery-ui-1.8.12.custom.min.js"></script>
 <script type="text/javascript" src="js/jquery.ui.datepicker-ja.js"></script>
-<script src="js/jquery.maxlength.js" type="text/javascript"></script>
+<script src="js/textlength.js" type="text/javascript"></script>
 <script type="text/javascript"> <!--
 jQuery( function() {
 
