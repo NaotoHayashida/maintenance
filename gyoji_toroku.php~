@@ -157,7 +157,7 @@ if($update_id != ""and $edit==TRUE and $mode == "insert" ){
 			else if($action == "トップページのプレビュー"){
 				echo "<script language='JavaScript'>window.open('../new/index.html?preview=gyoji_preview');</script>";
 			}
-			else if($action == "博物館のご案内のプレビュー"){
+			else if($action == "博物館のご案内のプレビュー?"){
 				echo "<script language='JavaScript'>window.open('../new/museum/index.html?preview=gyoji_preview');</script>";
 			}
 		}
