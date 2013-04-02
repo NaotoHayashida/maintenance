@@ -212,15 +212,6 @@ function kyukanbitoroku_minyuryoku_check(){
 			alert('タイトルが未入力です。');
 			return false;
 		}
-/*
-		var comment_chk = minyuryoku_check("comment");
-
-		if(comment_chk == false){
-			alert('コメントが未入力です。');
-			return false;
-		}
-	}
-*/
 	var hizuke_chk = minyuryoku_check("hizuke");
 	var hizuke = document.form.hizuke.value;
 
@@ -238,12 +229,6 @@ function kyukanbitoroku_minyuryoku_check(){
 
 	}
 }
-
-	//$(function() {
-	//	$('textarea.title').maxlength({'feedback': <?= title_max; ?>});
-	//	$('textarea.comment').maxlength({'feedback': <?= comment_max; ?>});
-	//});
-
 
 //-->
 </script>

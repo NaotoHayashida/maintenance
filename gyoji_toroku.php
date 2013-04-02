@@ -323,14 +323,6 @@ function gyojitoroku_minyuryoku_check(){
 				return false;
 			}
 		}
-/*		else{
-			var comment_chk = minyuryoku_check("comment");
-
-			if(comment_chk == false){
-				alert('コメントが未入力です。');
-				return false;
-			}
-		}*/
 		
 	}
 	if(k_new == true && k_cal == true){
@@ -338,13 +330,6 @@ function gyojitoroku_minyuryoku_check(){
 
 		if(title_chk == false){
 			alert('タイトルが未入力です。');
-			return false;
-		}
-
-		var comment_chk = minyuryoku_check("comment");
-
-		if(comment_chk == false){
-			alert('コメントが未入力です。');
 			return false;
 		}
 
@@ -359,11 +344,6 @@ function gyojitoroku_minyuryoku_check(){
 		}
 	}
 }
-
-//	$(function() {
-//		$('textarea.title').maxlength({'feedback': <?= title_max; ?>});
-//		$('textarea.comment').maxlength({'feedback': <?= comment_max; ?>});
-//	});
 
 //-->
 </script>
