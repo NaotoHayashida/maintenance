@@ -4,9 +4,9 @@
   var anchormax=30;
 
 //行事区分
-	$('#gyojikubun').bind('keydown keyup keypress change',function(){
-	var value=$('#gyojikubun option:selected').val();
-   if(value==''){$('#gyojikubun').css({background:'#ffcccc'});
+	$('.gyojikubun').bind('keydown keyup keypress change',function(){
+	var value=$('.gyojikubun option:selected').val();
+   if(value==''){$('.gyojikubun').css({background:'#ffcccc'});
    $('.gyojicomment').html("行事区分を選択してください！");
    $('.button').attr('disabled','disabled');
    $('.button-pre').attr('disabled','disabled');
@@ -15,7 +15,7 @@
    $('.comment').attr('disabled','disabled');
    }
 
-   else{$('#gyojikubun').css({background:'#ffffff'});
+   else{$('.gyojikubun').css({background:'#ffffff'});
    $('.gyojicomment').html(" ");
    $('.button').removeAttr('disabled');
    $('.button-pre').removeAttr('disabled');
@@ -37,7 +37,7 @@
    $('.button-pre').attr('disabled','disabled');
    $('.comment').attr('disabled','disabled');
    $('.anchor').attr('disabled','disabled');
-   $('#gyojikubun').attr('disabled','disabled');
+   $('.gyojikubun').attr('disabled','disabled');
    }
    else{$('.title').css({background:'#ffffff'});
    $('.button').removeAttr('disabled');
@@ -60,14 +60,14 @@
    $('.button-pre').attr('disabled','disabled');
    $('.title').attr('disabled','disabled');
    $('.anchor').attr('disabled','disabled');
-   $('#gyojikubun').attr('disabled','disabled');
+   $('.gyojikubun').attr('disabled','disabled');
    }
    else{$('.comment').css({background:'#ffffff'});
    $('.button').removeAttr('disabled');
    $('.button-pre').removeAttr('disabled');
    $('.title').removeAttr('disabled');
    $('.anchor').removeAttr('disabled');
-   $('#gyojikubun').removeAttr('disabled');
+   $('.gyojikubun').removeAttr('disabled');
 
    }
 });
@@ -83,22 +83,22 @@
    $('.button-pre').attr('disabled','disabled');
    $('.comment').attr('disabled','disabled');
    $('.title').attr('disabled','disabled');
-   $('#gyojikubun').attr('disabled','disabled');
+   $('.gyojikubun').attr('disabled','disabled');
    }
    else{$('.anchor').css({background:'#ffffff'});
    $('.button').removeAttr('disabled');
    $('.button-pre').removeAttr('disabled');
    $('.comment').removeAttr('disabled');
    $('.title').removeAttr('disabled');
-   $('#gyojikubun').removeAttr('disabled');
+   $('.gyojikubun').removeAttr('disabled');
    }
 	});
 
 //チェックボックス
-	$('.ALL').click(function(){
-	var chk_new = $('#k_new').is(':checked');
-	var chk_cal = $('#k_cal').is(':checked');
-	if(chk_new == true){$('.ALL').attr('checked','checked');
+	$("input[type='checkbox']").click(function(){
+	var chk_new = $('.k_new').is(':checked');
+	var chk_cal = $('.k_cal').is(':checked');
+	if(chk_new == true){$("input[type='checkbox']").attr('checked','checked');
 	}
 
 	});
