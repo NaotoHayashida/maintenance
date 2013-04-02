@@ -135,13 +135,15 @@ if($update_id != "" and $mode == "insert" ){
 				</div>
 				<div class="gyoji-right1">
 <!--				<p class="toroku2"><input type="text" name="title" size="30" maxlength="40" value="<?= $h_title ?>"/></p>-->
-					<p class="toroku2"><textarea cols="40" rows="4" maxlength="<?= title_max; ?>" name="title" class="title"><?= $h_title; ?></textarea></p>
+					<p class="toroku2"><textarea cols="40" rows="4" name="title" class="title"><?= $h_title; ?></textarea></p>
+<span class="counttitle">80</span>
 				</div>
 				<div class="gyoji-left1">
 					<p class="toroku1">コメント</p>
 				</div>
 				<div class="gyoji-right1">
-					<p class="toroku2"><textarea cols="40" rows="4" maxlength="<?= comment_max; ?>" name="comment" class="comment"><?= $h_comment; ?></textarea></p>
+					<p class="toroku2"><textarea cols="40" rows="4" name="comment" class="comment"><?= $h_comment; ?></textarea></p>
+ <span class="countcomment">256</span>
 				</div>
 				<div class="gyoji-left1">
 					<p class="toroku1" >日付</p>
@@ -237,10 +239,10 @@ function kyukanbitoroku_minyuryoku_check(){
 	}
 }
 
-	$(function() {
-		$('textarea.title').maxlength({'feedback': <?= title_max; ?>});
-		$('textarea.comment').maxlength({'feedback': <?= comment_max; ?>});
-	});
+	//$(function() {
+	//	$('textarea.title').maxlength({'feedback': <?= title_max; ?>});
+	//	$('textarea.comment').maxlength({'feedback': <?= comment_max; ?>});
+	//});
 
 
 //-->
