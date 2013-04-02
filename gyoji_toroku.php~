@@ -29,11 +29,9 @@ if(isset($_POST["k_new"])){
 else{
 	$k_new = 0;																//新着情報に公開
 }
-
 if($edit==TRUE){echo"editmode?";}
 else if($update_id !=""){echo"duplicatemode";}
 else{echo"new mode";}
-
 //リロード時にデータを反映
 if($mode == "insert"){
 	$h_gyojikubun = $_POST["gyojikubun"];
@@ -89,6 +87,7 @@ if($update_id != ""){
 
 //UPdate実行
 if($update_id != ""and $edit==TRUE and $mode == "insert" ){
+   
 	//リロード時にデータを反映
 	$h_gyojikubun = $_POST["gyojikubun"];
 	$h_title = $_POST["title"];
@@ -158,7 +157,7 @@ if($update_id != ""and $edit==TRUE and $mode == "insert" ){
 			else if($action == "トップページのプレビュー"){
 				echo "<script language='JavaScript'>window.open('../new/index.html?preview=gyoji_preview');</script>";
 			}
-			else if($action == "博物館のご案内のプレビュー"){
+			else if($action == "博物館のご案内のプレビュー?"){
 				echo "<script language='JavaScript'>window.open('../new/museum/index.html?preview=gyoji_preview');</script>";
 			}
 		}
