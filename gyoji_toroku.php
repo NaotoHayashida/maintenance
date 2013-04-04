@@ -190,6 +190,7 @@ if($update_id != ""and $edit==TRUE and $mode == "insert" ){
 								echo "<option value='3'";if($h_gyojikubun == '3'){echo " selected";}echo ">".gyojiKubunNameGet(3)."</option>\n"; ?>
 							</select>
 						</p>
+                  <span class="gyojicomment"></span>
 				</div>
 				<div class="gyoji-left1">
 					<p class="toroku1" >タイトル</p>
@@ -271,13 +272,11 @@ function goToTop_preview(){
 }
 
 function gyojitoroku_minyuryoku_check(){
-//	var k_new = document.form.k_new.checked;
-//	var k_cal = document.form.k_cal.checked;
 	
 	var gyojikubun_chk = minyuryoku_check("gyojikubun");
 
 	if(gyojikubun_chk == false){
-		alert('行事区分が未入力です。');
+		alert('正しく入力してください');
 		return false;
 	}
 
@@ -303,45 +302,6 @@ function gyojitoroku_minyuryoku_check(){
 		alert('期間に誤りがあります。');
 		return false;
 
-	}
-
-	var k_new = document.form.k_new.checked;
-	var k_cal = document.form.k_cal.checked;
-
-	if(k_new == true && k_cal == false){
-		alert('カレンダー非公開、新着情報公開という設定はできません。');
-		return false;
-	}
-
-	if(k_new == false ){
-		if(document.form.gyojikubun.value != 2){
-
-			var anchor_chk = minyuryoku_check("anchor");
-
-			if(anchor_chk == false){
-				alert('段落名が未入力です。');
-				return false;
-			}
-		}
-		
-	}
-	if(k_new == true && k_cal == true){
-		var title_chk = minyuryoku_check("title");
-
-		if(title_chk == false){
-			alert('タイトルが未入力です。');
-			return false;
-		}
-
-		if(document.form.gyojikubun.value != 2){
-
-			var anchor_chk = minyuryoku_check("anchor");
-
-			if(anchor_chk == false){
-				alert('段落名が未入力です。');
-				return false;
-			}
-		}
 	}
 }
 
