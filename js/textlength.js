@@ -2,6 +2,7 @@
   var titlemax =80;
   var commentmax =256;
   var anchormax=30;
+var value=$('.gyojikubun option:selected').val();
 
 //行事区分
 	$('.gyojikubun').bind('keydown keyup keypress change',function(){
@@ -22,8 +23,14 @@
    $('.title').removeAttr('disabled');
    $('.anchor').removeAttr('disabled');
    $('.comment').removeAttr('disabled');
-
    }
+   
+   if(value == 3){
+   $('.anchor').removeAttr('disabled');
+   }else{
+   $('.anchor').attr('disabled','disabled');
+   }
+
 });
 
 //タイトル
@@ -45,6 +52,13 @@
    $('.comment').removeAttr('disabled');
    $('.anchor').removeAttr('disabled');
    $('.gyojikubun').removeAttr('disabled');
+
+var value=$('.gyojikubun option:selected').val();
+   if(value == 3){
+   $('.anchor').removeAttr('disabled');
+   }else{
+   $('.anchor').attr('disabled','disabled');
+   }
 
    }
 });
@@ -68,6 +82,13 @@
    $('.title').removeAttr('disabled');
    $('.anchor').removeAttr('disabled');
    $('.gyojikubun').removeAttr('disabled');
+
+var value=$('.gyojikubun option:selected').val();
+   if(value == 3){
+   $('.anchor').removeAttr('disabled');
+   }else{
+   $('.anchor').attr('disabled','disabled');
+   }
 
    }
 });

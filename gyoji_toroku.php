@@ -279,6 +279,12 @@ function gyojitoroku_minyuryoku_check(){
 		alert('正しく入力してください');
 		return false;
 	}
+	var title_chk = minyuryoku_check("title");
+
+	if(title_chk == false){
+		alert('タイトルが未入力です。');
+		return false;
+	}
 
 	var kaishibi_chk = minyuryoku_check("kaishibi");
 
@@ -293,15 +299,21 @@ function gyojitoroku_minyuryoku_check(){
 		alert('終了日が未入力です。');
 		return false;
 	}
-
+	if(document.form.gyojikubun.value == 3){
+		var anchor_chk = minyuryoku_check("anchor");
+		if(anchor_chk == false){
+			alert('段落名が未入力です。');
+			return false;
+		}
+	}
 	var kaishibi = document.form.kaishibi.value;
 	var shuryobi = document.form.shuryobi.value;
 	var kikan_chk = isValidPeriod(kaishibi,shuryobi,true);
 
+
 	if(kikan_chk == false){
 		alert('期間に誤りがあります。');
 		return false;
-
 	}
 }
 
