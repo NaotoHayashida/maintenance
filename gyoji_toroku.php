@@ -170,9 +170,10 @@ if($update_id != ""and $edit==TRUE and $mode == "insert" ){
 		<div class="all">
 			<form action="" id='form' name="form" method="POST">
 				<div class="header">
-				<h2>行事登録<?php if($edit==TRUE){echo"(編集)";}
-else if($update_id !=""){echo"(追加登録)";} 
-else{echo"(新規登録)";}?>
+				<h2><?php if($edit==TRUE){
+				echo"既存の行事を編集";
+				}else if($update_id !=""){echo"登録済行事を基に、新規の行事を登録";
+				}else{echo"新しく行事を登録";}?>
 				</h2>
 				</div>
 				<div class="kyotsu">
@@ -215,13 +216,13 @@ else{echo"(新規登録)";}?>
 						<span class="commenttext"></span>
 					</div>
 				<div class="gyoji-left1">
-					<p class="toroku1" >段落名
-					残り<span class="countanchor">30</span>文字
-					</p>
+					<p class="toroku1" >段落名</p>
+					<p>残り<span class="countanchor">30</span>文字</p>
+					
 					
 				</div>
 				<div class="gyoji-right1">
-					<p class="toroku2">
+					<p class="toroku2 anchortextarea">
 			<input type="text" name="anchor" class="anchor" size="30" value="<?= $h_anchor; ?>"/></p>
 						<span class="anchortext"></span>
 				</div>

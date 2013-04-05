@@ -186,6 +186,8 @@ html,body{
 	width: 70px;
 	height: 30px;
 	font-size: 18px;
+	float: left;
+	margin:0px 565px;
 }
 
 .button-pre {
@@ -207,15 +209,14 @@ html,body{
 }
 
 /*êVãK*/
-/*
+
 span{
-margin-left:20px ;
+margin:0px 0px 0px 20px ;
 }
-/*p span{
-margin:-0px 0px 0px 0px; 
+p span{
+margin:0px 0px 0px 0px
 }
-*/
-/*
+
 .anchortextarea{
-margin:10px 0px 0px 0px;
-}*/
+padding:10px 0px 0px 20px;
+}
