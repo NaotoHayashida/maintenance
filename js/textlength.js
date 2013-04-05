@@ -46,7 +46,7 @@
    $('.gyojikubun').attr('disabled','disabled');
    }
    else{$('.title').css({background:'#ffffff'});
-   $('.titletext').html("タイトル:"+countdowntitle+"文字");
+   $('.titletext').html(" ");
    $('.button').removeAttr('disabled');
    $('.button-pre').removeAttr('disabled');
    $('.comment').removeAttr('disabled');
@@ -77,6 +77,7 @@ var value=$('.gyojikubun option:selected').val();
    $('.gyojikubun').attr('disabled','disabled');
    }
    else{$('.comment').css({background:'#ffffff'});
+   $('.commenttext').html(" ");
    $('.button').removeAttr('disabled');
    $('.button-pre').removeAttr('disabled');
    $('.title').removeAttr('disabled');
@@ -107,6 +108,7 @@ var value=$('.gyojikubun option:selected').val();
    $('.gyojikubun').attr('disabled','disabled');
    }
    else{$('.anchor').css({background:'#ffffff'});
+   $('.anchortext').html(" ");
    $('.button').removeAttr('disabled');
    $('.button-pre').removeAttr('disabled');
    $('.comment').removeAttr('disabled');
