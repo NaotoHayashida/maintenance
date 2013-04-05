@@ -2,7 +2,6 @@
   var titlemax =80;
   var commentmax =256;
   var anchormax=30;
-var value=$('.gyojikubun option:selected').val();
 
 //行事区分
 	$('.gyojikubun').bind('keydown keyup keypress change',function(){
