@@ -38,7 +38,7 @@
 		var countdowntitle= (titlemax)-(titleValueLength);
 		   $('.counttitle').html(countdowntitle);
    if(countdowntitle<0){$('.title').css({background:'#ffcccc'});
-   $('.counttitle').html("入力文字数をオーバーしています！");
+   $('.titletext').html("入力文字数をオーバーしています！");
    $('.button').attr('disabled','disabled');
    $('.button-pre').attr('disabled','disabled');
    $('.comment').attr('disabled','disabled');
@@ -46,6 +46,7 @@
    $('.gyojikubun').attr('disabled','disabled');
    }
    else{$('.title').css({background:'#ffffff'});
+   $('.titletext').html("タイトル:"+countdowntitle+"文字");
    $('.button').removeAttr('disabled');
    $('.button-pre').removeAttr('disabled');
    $('.comment').removeAttr('disabled');
@@ -68,7 +69,7 @@ var value=$('.gyojikubun option:selected').val();
     var countdown= (commentmax)-(commentValueLength);
 		   $('.countcomment').html(countdown);
    if(countdown<0){$('.comment').css({background:'#ffcccc'});
-   $('.countcomment').html("入力文字数をオーバーしています！");
+   $('.commenttext').html("入力文字数をオーバーしています！");
    $('.button').attr('disabled','disabled');
    $('.button-pre').attr('disabled','disabled');
    $('.title').attr('disabled','disabled');
@@ -98,7 +99,7 @@ var value=$('.gyojikubun option:selected').val();
     var countdownanchor= (anchormax)-(anchorValueLength);
 		   $('.countanchor').html(countdownanchor);
    if(countdownanchor<0){$('.anchor').css({background:'#ffcccc'});
-   $('.countanchor').html("入力文字数をオーバーしています！");
+   $('.anchortext').html("入力文字数をオーバーしています！");
    $('.button').attr('disabled','disabled');
    $('.button-pre').attr('disabled','disabled');
    $('.comment').attr('disabled','disabled');

@@ -30,9 +30,7 @@ else{
 	$k_new = 0;																//新着情報に公開
 }
 
-if($edit==TRUE){echo"editmode?";}
-else if($update_id !=""){echo"duplicatemode";}
-else{echo"new mode";}
+
 
 //リロード時にデータを反映
 if($mode == "insert"){
@@ -129,7 +127,7 @@ if($update_id != ""and $edit==TRUE and $mode == "insert" ){
 //				echo "同じ行事区分で、期間が重複しているデーターが存在するので登録できません。update<br>";
 				
 				$error = 1;
-										}
+			}
 		}
 		
 		//エラーがなかった場合　updateを実行する
@@ -172,7 +170,10 @@ if($update_id != ""and $edit==TRUE and $mode == "insert" ){
 		<div class="all">
 			<form action="" id='form' name="form" method="POST">
 				<div class="header">
-				<h2>行事登録</h2>
+				<h2>行事登録<?php if($edit==TRUE){echo"(編集)";}
+else if($update_id !=""){echo"(追加登録)";} 
+else{echo"(新規登録)";}?>
+				</h2>
 				</div>
 				<div class="kyotsu">
 				<p><a href="menu.php">管理メニュー</a></p>
@@ -197,23 +198,31 @@ if($update_id != ""and $edit==TRUE and $mode == "insert" ){
 				</div>
 				<div class="gyoji-right1">
 <!--				<p class="toroku2"><input type="text" name="title" size="30" maxlength="40" value="<?= $h_title ?>"/></p>-->
-					<p class="toroku2"><textarea cols="40" rows="4" name="title" class="title"><?= $h_title; ?></textarea></p>
-<span class="counttitle">80</span>
+					<p class="toroku2">
+						<textarea cols="40" rows="4" name="title" class="title"><?= $h_title; ?></textarea></p>
+						<p class="titletext" style="margin:0px">
+							タイトル:<span class="counttitle">80</span>文字
+						</p>
 				</div>
 				<div class="gyoji-left1">
 					<p class="toroku1">コメント</p>
 				</div>
 				<div class="gyoji-right1">
-					<p class="toroku2"><textarea cols="40" rows="4" name="comment" class="comment"><?= $h_comment; ?></textarea></p>
-                  <span class="countcomment">256</span>
+					<p class="toroku2">
+					<textarea cols="40" rows="4" name="comment" class="comment"><?= $h_comment; ?></textarea></p>
+					<p class="commenttext" style="margin:0px 0px 0px 220px">
+						コメント:<span class="countcomment">256</span>文字
+					</p>
 				</div>
 				<div class="gyoji-left1">
 					<p class="toroku1" >段落名</p>
 				</div>
 				<div class="gyoji-right1">
-					<p class="toroku2"><input type="text" name="anchor" class="anchor" size="30" value="<?= $h_anchor; ?>"/></p>
-                  <span class="countanchor">30</span>
-
+					<p class="toroku2">
+			<input type="text" name="anchor" class="anchor" size="30" value="<?= $h_anchor; ?>"/></p>
+						<p class="anchortext" style="margin:0px 0px 0px 150px">
+						段落:<span class="countanchor">30</span>文字
+						</p>
 				</div>
 				<div class="gyoji-left1">
 					<p class="toroku1">期間</p>
