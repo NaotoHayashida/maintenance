@@ -131,19 +131,18 @@ if($update_id != "" and $mode == "insert" ){
 				</div>
 
 				<div class="gyoji-left1">
-					<p class="toroku1">タイトル</p>
+					<p class="toroku1">タイトル<br><br>残り<span class="counttitle">80</span>文字</p>
 				</div>
 				<div class="gyoji-right1">
-<!--				<p class="toroku2"><input type="text" name="title" size="30" maxlength="40" value="<?= $h_title ?>"/></p>-->
 					<p class="toroku2"><textarea cols="40" rows="4" name="title" class="title"><?= $h_title; ?></textarea></p>
-<span class="counttitle">80</span>
+					<span class="titletext"></span>
 				</div>
 				<div class="gyoji-left1">
-					<p class="toroku1">コメント</p>
+					<p class="toroku1">コメント<br><br>残り<span class="countcomment">256</span>文字</p>
 				</div>
 				<div class="gyoji-right1">
 					<p class="toroku2"><textarea cols="40" rows="4" name="comment" class="comment"><?= $h_comment; ?></textarea></p>
- <span class="countcomment">256</span>
+					<span class="commenttext"></span>
 				</div>
 				<div class="gyoji-left1">
 					<p class="toroku1" >日付</p>
