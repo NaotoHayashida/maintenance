@@ -248,7 +248,7 @@ if($update_id != ""and $edit==TRUE and $mode == "insert" ){
 					<p>
 						<input type="hidden" name="preview" value="gyoji_preview">
 						<input type="hidden" name="mode" value="insert">
-						<input type="submit" name="action" value="実行" class="button" onclick="return stay_here();">
+						<input type="submit" name="action" value="実行" class="button gyojibutton" onclick="return stay_here();">
 					</p>
 				</div>
 <?php 	//UPDATEしたさい重複チェックに引っかかった場合のエラー文			

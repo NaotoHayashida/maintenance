@@ -404,8 +404,8 @@ echo <<< __EOS0__
 
 <div class="Yajirushi-left">
 <form name="hyo_form" method="POST" onsubmit="return send_check()">
-<input type="submit" name="mode" value="↑">
-<input type="submit" name="mode" value="↓">
+<input type="submit" name="mode" class="yuusenzyuni" value="↑">
+<input type="submit" name="mode" class="yuusenzyuni" value="↓">
 </div>
 
 <table class = "table1-t2">

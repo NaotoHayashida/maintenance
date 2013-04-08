@@ -1,9 +1,9 @@
-html,body{  
+ï»¿html,body{  
 	font-size: 16px;
 	text-align: center;
 
 }
-/*ƒe[ƒuƒ‹*/
+/*ãƒ†ãƒ¼ãƒ–ãƒ«*/
 .table-tc {
 	text-align: center;
 }
@@ -61,7 +61,7 @@ html,body{
 }
 
 
-/*‹¤’Ê*/
+/*å…±é€š*/
 .all {
 	margin:auto;
 	text-align: center;
@@ -85,13 +85,13 @@ html,body{
 	width: 1150px;
 }
 
-/*ŠÇ—ƒƒjƒ…[*/
+/*ç®¡ç†ãƒ¡ãƒ‹ãƒ¥ãƒ¼*/
 .kanri {
 	text-align: center;
 	width: 1150px;
 	padding: 20px;
 }
-/*s–ˆê——*/
+/*è¡Œäº‹ä¸€è¦§*/
 
 .Kensaku-box{
 	width:1000px;
@@ -153,7 +153,7 @@ html,body{
 	clear: both;
 }
 
-/*s–“o˜^*/
+/*è¡Œäº‹ç™»éŒ²*/
 .gyoji-left1 {
 	text-align: right;
 	width: 550px;
@@ -186,6 +186,9 @@ html,body{
 	width: 70px;
 	height: 30px;
 	font-size: 18px;
+}
+
+.button gyoji {
 	float: left;
 	margin:0px 565px;
 }
@@ -195,7 +198,7 @@ html,body{
 	height: 30px;
 	font-size: 18px;
 }
-/*pƒ^ƒO*/
+/*pã‚¿ã‚°*/
 .toroku1 {
 	padding-right: 20px;
 }
@@ -208,7 +211,7 @@ html,body{
 	font-weight: bold;
 }
 
-/*V‹K*/
+/*æ–°è¦*/
 
 span{
 margin:0px 0px 0px 20px ;
@@ -219,4 +222,7 @@ margin:0px 0px 0px 0px
 
 .anchortextarea{
 padding:10px 0px 0px 20px;
+}
+.yuusenzyuni{
+width:25px
 }
