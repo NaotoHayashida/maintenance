@@ -24,7 +24,7 @@
    $('.comment').removeAttr('disabled');
    }
    
-   if(value == 3){
+   if(value!="" && value != 2){
    $('.anchor').removeAttr('disabled');
    }else{
    $('.anchor').attr('disabled','disabled');
@@ -54,7 +54,7 @@
    $('.gyojikubun').removeAttr('disabled');
 
 var value=$('.gyojikubun option:selected').val();
-   if(value == 3){
+   if(value!="" && value != 2){
    $('.anchor').removeAttr('disabled');
    }else{
    $('.anchor').attr('disabled','disabled');
@@ -85,7 +85,7 @@ var value=$('.gyojikubun option:selected').val();
    $('.gyojikubun').removeAttr('disabled');
 
 var value=$('.gyojikubun option:selected').val();
-   if(value == 3){
+   if(value!="" && value != 2){
    $('.anchor').removeAttr('disabled');
    }else{
    $('.anchor').attr('disabled','disabled');
