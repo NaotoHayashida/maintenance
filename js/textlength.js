@@ -3,6 +3,14 @@
   var commentmax =256;
   var anchormax=30;
 
+$(document).ready(function(){
+   var value=$('.gyojikubun option:selected').val();
+   if(value!="" && value != 2){
+   $('.anchor').removeAttr('disabled');
+   }else{
+   $('.anchor').attr('disabled','disabled');
+   }
+});
 //行事区分
 	$('.gyojikubun').bind('keydown keyup keypress change',function(){
 	var value=$('.gyojikubun option:selected').val();
