@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 	session_start();
 	require_once "php_functions/common_functions.php";
 	require_once "php_functions/ichiran_functions.php";
@@ -204,16 +204,15 @@ function goToTop_preview(){
 
 function kyukanbitoroku_minyuryoku_check(){
 
-	if(document.form.k_new.checked == true){
 		var title_chk = minyuryoku_check("title");
 
 		if(title_chk == false){
 			alert('タイトルが未入力です。');
 			return false;
 		}
+
 	var hizuke_chk = minyuryoku_check("hizuke");
 	var hizuke = document.form.hizuke.value;
-
 
 	if(hizuke_chk == false){
 		alert('日付が未入力です。');
@@ -223,7 +222,7 @@ function kyukanbitoroku_minyuryoku_check(){
 	var hizuke_ayamari_chk = isValidDate(hizuke);
 
 	if(hizuke_ayamari_chk == false){
-		alert('期間に誤りがあります。');
+		alert('期間に誤りがあります。')
 		return false;
 
 	}
