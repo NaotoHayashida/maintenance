@@ -189,7 +189,6 @@
 }
 
 .gyojibutton {
-	float: left;
 	margin:0px 565px;
 }
 
@@ -230,7 +229,8 @@ width:25px
 .error{
 color:#ff0000; 
 font-weight: bold;
-clear:both;
+padding-left:300px;
+text-align:left;
 }
 
 .errorjs{
