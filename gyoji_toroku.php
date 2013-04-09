@@ -252,7 +252,7 @@ if($update_id != ""and $edit==TRUE and $mode == "insert" ){
 					</p>
 				</div>
 <?php 	//UPDATEしたさい重複チェックに引っかかった場合のエラー文			
-		if($error == 1){echo	"<p style='color:red; font-weight: bold;'>同じ行事区分で、期間が重複しているデーターが存在するので登録できません。</p>";}	?>
+		if($error == 1){echo	"<p class='error'>同じ行事区分で、期間が重複しているデーターが存在するので登録できません。</p>";}	?>
 			</form>
 		</div>
 	</body>
@@ -385,7 +385,7 @@ function gyojitoroku_minyuryoku_check(){
 		}
 	}
 	else{
-		echo "<p style='color:red; font-weight: bold;'>同じ行事区分で、期間が重複しているデーターが存在するので登録できません。</p>";
+		echo "<p class='error'>同じ行事区分で、期間が重複しているデーターが存在するので登録できません。</p>";
 
 	}
 }

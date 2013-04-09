@@ -226,3 +226,14 @@ padding:10px 0px 0px 20px;
 .yuusenzyuni{
 width:25px
 }
+
+.error{
+color:#ff0000; 
+font-weight: bold;
+clear:both;
+}
+
+.errorjs{
+font-color:red;
+}
+
