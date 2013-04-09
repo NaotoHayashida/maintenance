@@ -246,7 +246,7 @@ echo <<< __searchbar__
 <table class ="table1-t1">
 	<tbody>
 		<tr>
-			<th rowspan=2 style='background=#663300' style='color=#F0E8D8'>検索</th>
+			<th rowspan=2>検索</th>
 			<th>ID</th>
 			<th>タイトル</th>
 			<th colspan="3">期間</th>
