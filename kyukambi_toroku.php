@@ -223,7 +223,7 @@ function kyukanbitoroku_minyuryoku_check(){
 	var hizuke_ayamari_chk = isValidDate(hizuke);
 
 	if(hizuke_ayamari_chk == false){
-		alert('期間に誤りがあります。')
+		alert('期間に誤りがあります。');
 		return false;
 
 	}

@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 	session_start();
 	require_once "php_functions/common_functions.php";
 	require_once "php_functions/ichiran_functions.php";
