@@ -6,28 +6,40 @@
 //行事区分
 	$('.gyojikubun').bind('keydown keyup keypress change',function(){
 	var value=$('.gyojikubun option:selected').val();
-   if(value==''){$('.gyojikubun').css({background:'#ffcccc'});
+   if(value==''){$('.gyojikubun').css({background:'#ff6666'});
    $('.gyojicomment').html("行事区分を選択してください！");
    $('.button').attr('disabled','disabled');
+	$('.button').css({background:'#eeeeee'});
    $('.button-pre').attr('disabled','disabled');
+	$('.button-pre').css({background:'#eeeeee'});
    $('.title').attr('disabled','disabled');
+	$('.title').css({background:'eeeeee'});
    $('.anchor').attr('disabled','disabled');
+	$('.anchor').css({background:'#eeeeee'});
    $('.comment').attr('disabled','disabled');
+	$('.comment').css({background:'#eeeeee'});
    }
 
    else{$('.gyojikubun').css({background:'#ffffff'});
    $('.gyojicomment').html(" ");
    $('.button').removeAttr('disabled');
+	$('.button').css({background:'#ffffff'});
    $('.button-pre').removeAttr('disabled');
+	$('.button-pre').css({background:'#ffffff'});
    $('.title').removeAttr('disabled');
+	$('.title').css({background:'#ffffff'});
    $('.anchor').removeAttr('disabled');
+	$('.anchor').css({background:'#ffffff'});
    $('.comment').removeAttr('disabled');
+	$('.comment').css({background:'#ffffff'});
    }
    
    if(value!="" && value != 2){
    $('.anchor').removeAttr('disabled');
+	$('.anchor').css({background:'#ffffff'});
    }else{
    $('.anchor').attr('disabled','disabled');
+	$('.anchor').css({background:'#eeeeee'});
    }
 
 });
@@ -37,28 +49,41 @@
 		var titleValueLength = $(this).val().length;
 		var countdowntitle= (titlemax)-(titleValueLength);
 		   $('.counttitle').html(countdowntitle);
-   if(countdowntitle<0){$('.title').css({background:'#ffcccc'});
+   if(countdowntitle<0){$('.title').css({background:'#ff6666'});
    $('.titletext').html("入力文字数をオーバーしています！");
    $('.button').attr('disabled','disabled');
+	$('.button').css({background:'#eeeeee'});
    $('.button-pre').attr('disabled','disabled');
-   $('.comment').attr('disabled','disabled');
-   $('.anchor').attr('disabled','disabled');
+	$('.button-pre').css({background:'#eeeeee'});
    $('.gyojikubun').attr('disabled','disabled');
+	$('.gyojikubun').css({background:'#eeeeee'});
+   $('.anchor').attr('disabled','disabled');
+	$('.anchor').css({background:'#eeeeee'});
+   $('.comment').attr('disabled','disabled');
+	$('.comment').css({background:'#eeeeee'});
    }
    else{$('.title').css({background:'#ffffff'});
    $('.titletext').html(" ");
    $('.button').removeAttr('disabled');
+	$('.button').css({background:'#ffffff'});
    $('.button-pre').removeAttr('disabled');
-   $('.comment').removeAttr('disabled');
-   $('.anchor').removeAttr('disabled');
+	$('.button-pre').css({background:'#ffffff'});
    $('.gyojikubun').removeAttr('disabled');
+	$('.gyojikubun').css({background:'#ffffff'});
+   $('.anchor').removeAttr('disabled');
+	$('.anchor').css({background:'#ffffff'});
+   $('.comment').removeAttr('disabled');
+	$('.comment').css({background:'#ffffff'});
 
 var value=$('.gyojikubun option:selected').val();
    if(value!="" && value != 2){
    $('.anchor').removeAttr('disabled');
+	$('.anchor').css({background:'#ffffff'});
    }else{
    $('.anchor').attr('disabled','disabled');
+	$('.anchor').css({background:'#eeeeee'});
    }
+
 
    }
 });
@@ -68,28 +93,41 @@ var value=$('.gyojikubun option:selected').val();
 		var commentValueLength = $(this).val().length;
     var countdown= (commentmax)-(commentValueLength);
 		   $('.countcomment').html(countdown);
-   if(countdown<0){$('.comment').css({background:'#ffcccc'});
+   if(countdown<0){$('.comment').css({background:'#ff6666'});
    $('.commenttext').html("入力文字数をオーバーしています！");
    $('.button').attr('disabled','disabled');
+	$('.button').css({background:'#eeeeee'});
    $('.button-pre').attr('disabled','disabled');
-   $('.title').attr('disabled','disabled');
-   $('.anchor').attr('disabled','disabled');
+	$('.button-pre').css({background:'#eeeeee'});
    $('.gyojikubun').attr('disabled','disabled');
+	$('.gyojikubun').css({background:'#eeeeee'});
+   $('.anchor').attr('disabled','disabled');
+	$('.anchor').css({background:'#eeeeee'});
+   $('.title').attr('disabled','disabled');
+	$('.title').css({background:'#eeeeee'});
    }
    else{$('.comment').css({background:'#ffffff'});
    $('.commenttext').html(" ");
    $('.button').removeAttr('disabled');
+	$('.button').css({background:'#ffffff'});
    $('.button-pre').removeAttr('disabled');
-   $('.title').removeAttr('disabled');
-   $('.anchor').removeAttr('disabled');
+	$('.button-pre').css({background:'#ffffff'});
    $('.gyojikubun').removeAttr('disabled');
+	$('.gyojikubun').css({background:'#ffffff'});
+   $('.anchor').removeAttr('disabled');
+	$('.anchor').css({background:'#ffffff'});
+   $('.title').removeAttr('disabled');
+	$('.title').css({background:'#ffffff'});
 
 var value=$('.gyojikubun option:selected').val();
    if(value!="" && value != 2){
    $('.anchor').removeAttr('disabled');
+	$('.anchor').css({background:'#ffffff'});
    }else{
    $('.anchor').attr('disabled','disabled');
+	$('.anchor').css({background:'#eeeeee'});
    }
+
 
    }
 });
@@ -99,21 +137,31 @@ var value=$('.gyojikubun option:selected').val();
 		var anchorValueLength = $(this).val().length;
     var countdownanchor= (anchormax)-(anchorValueLength);
 		   $('.countanchor').html(countdownanchor);
-   if(countdownanchor<0){$('.anchor').css({background:'#ffcccc'});
+   if(countdownanchor<0){$('.anchor').css({background:'#ff6666'});
    $('.anchortext').html("入力文字数をオーバーしています！");
    $('.button').attr('disabled','disabled');
+	$('.button').css({background:'#eeeeee'});
    $('.button-pre').attr('disabled','disabled');
-   $('.comment').attr('disabled','disabled');
-   $('.title').attr('disabled','disabled');
+	$('.button-pre').css({background:'#eeeeee'});
    $('.gyojikubun').attr('disabled','disabled');
+	$('.gyojikubun').css({background:'#eeeeee'});
+   $('.comment').attr('disabled','disabled');
+	$('.comment').css({background:'#eeeeee'});
+   $('.title').attr('disabled','disabled');
+	$('.title').css({background:'#eeeeee'});
    }
    else{$('.anchor').css({background:'#ffffff'});
    $('.anchortext').html(" ");
    $('.button').removeAttr('disabled');
+	$('.button').css({background:'#ffffff'});
    $('.button-pre').removeAttr('disabled');
-   $('.comment').removeAttr('disabled');
-   $('.title').removeAttr('disabled');
+	$('.button-pre').css({background:'#ffffff'});
    $('.gyojikubun').removeAttr('disabled');
+	$('.gyojikubun').css({background:'#ffffff'});
+   $('.title').removeAttr('disabled');
+	$('.title').css({background:'#ffffff'});
+   $('.comment').removeAttr('disabled');
+	$('.comment').css({background:'#ffffff'});
    }
 	});
 
