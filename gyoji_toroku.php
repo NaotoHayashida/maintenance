@@ -192,7 +192,7 @@ if($update_id != ""and $edit==TRUE and $mode == "insert" ){
 								echo "<option value='3'";if($h_gyojikubun == '3'){echo " selected";}echo ">".gyojiKubunNameGet(3)."</option>\n"; ?>
 							</select>
 						</p>
-                  <span class="gyojicomment"></span>
+                  <span class="gyojicomment errortext"></span>
 				</div>
 				<div class="gyoji-left1">
 					<p class="toroku1" >タイトル</p>
@@ -202,18 +202,18 @@ if($update_id != ""and $edit==TRUE and $mode == "insert" ){
 <!--				<p class="toroku2"><input type="text" name="title" size="30" maxlength="40" value="<?= $h_title ?>"/></p>-->
 					<p class="toroku2">
 						<textarea cols="40" rows="4" name="title" class="title"><?= $h_title; ?></textarea></p>
-						<span class="titletext"> </span>
+						<span class="titletext errortext"> </span>
 			
 				</div>
 				<div class="gyoji-left1">
 					<p class="toroku1">コメント</p>
-					<p>残り<span class="countcomment">256</span>文字</p>
+					<p>残り<span class="countcomment ">256</span>文字</p>
 
 				</div>
 				<div class="gyoji-right1">
 					<p class="toroku2">
 					<textarea cols="40" rows="4" name="comment" class="comment"><?= $h_comment; ?></textarea></p>
-						<span class="commenttext"></span>
+						<span class="commenttext errortext" ></span>
 					</div>
 				<div class="gyoji-left1">
 					<p class="toroku1" >段落名</p>
@@ -224,7 +224,7 @@ if($update_id != ""and $edit==TRUE and $mode == "insert" ){
 				<div class="gyoji-right1">
 					<p class="toroku2 anchortextarea">
 			<input type="text" name="anchor" class="anchor" size="30" value="<?= $h_anchor; ?>"/></p>
-						<span class="anchortext"></span>
+						<span class="anchortext errortext"></span>
 				</div>
 				<div class="gyoji-left1">
 					<p class="toroku1">期間</p>
