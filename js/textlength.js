@@ -7,8 +7,10 @@ $(document).ready(function(){
    var value=$('.gyojikubun option:selected').val();
    if(value!="" && value != 2){
    $('.anchor').removeAttr('disabled');
+	$('.anchor').css({background:'#ffffff'});
    }else{
    $('.anchor').attr('disabled','disabled');
+	$('.anchor').css({background:'#eeeeee'});
    }
 });
 //行事区分
@@ -21,11 +23,12 @@ $(document).ready(function(){
    $('.button-pre').attr('disabled','disabled');
 	$('.button-pre').css({background:'#eeeeee'});
    $('.title').attr('disabled','disabled');
-	$('.title').css({background:'eeeeee'});
+	$('.title').css({background:'#eeeeee'});
    $('.anchor').attr('disabled','disabled');
 	$('.anchor').css({background:'#eeeeee'});
    $('.comment').attr('disabled','disabled');
 	$('.comment').css({background:'#eeeeee'});
+
    }
 
    else{$('.gyojikubun').css({background:'#ffffff'});
