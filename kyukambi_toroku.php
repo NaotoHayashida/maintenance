@@ -168,14 +168,11 @@ if($update_id != "" and $mode == "insert" ){
 						<input type="hidden" name="mode" value="insert">
 						<input type="submit" name="action" value="実行" class="button" onclick="return stay_here();">
 						<?php 	//UPDATEしたさい重複チェックに引っかかった場合のエラー文。			
-							if($error == 1){echo	"<p class='error'>そのデータは既に登録済みです。</p>";}
+							if($error == 1){echo	"<p class='errorkyukanbi'>そのデータは既に登録済みです。</p>";}
 						?>
 					</p>
 				</div>
 			</form>
-		</div>
-	</body>
-</html>
 
 <script language="JavaScript">
 <!--
@@ -270,8 +267,11 @@ if($update_id == "" and $mode == "insert"){
 	}
 	else{
 
-		echo "<p class='error'>そのデータは既に登録済みです。</p>";
+		echo "<p class='errorkyukanbi'>そのデータは既に登録済みです。</p>";
 
 	}
 }
 ?>
+		</div>
+	</body>
+</html>
