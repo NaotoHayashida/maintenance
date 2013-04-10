@@ -481,7 +481,7 @@ while($row = pg_fetch_object($result)){//表示ループ開始
 	echo			"	<td>$danrakumei</td>								     			\n";
 	echo			"	<td><a href='gyoji_toroku.php?id=$id'>追加</a>
 					<br>
-					<a href='gyoji_toroku.php?id=$id &edit=TRUE'>編集</a>
+					<a href='gyoji_toroku.php?id=$id&edit=TRUE'>編集</a>
 </td>				\n	";
 	echo			"	<td><input type='hidden' name='cale$i' value='f' />	\n";
 	echo			"	<input type='checkbox' name='cale$i' value='t'";if($cale == 't'){echo " checked='checked'";}echo "/></td>	\n";
