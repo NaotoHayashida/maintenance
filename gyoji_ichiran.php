@@ -421,6 +421,7 @@ echo <<< __EOS0__
 			<th>編集</th>
 			<th>カレ<br><input type="checkbox" name="cale_ALL" value="" onclick="fncAllCheck('cale_ALL','cale',$hyou_hyouji)"/></th>
 			<th>新着<br><input type="checkbox" name="new_ALL" value="" onclick="fncAllCheck('new_ALL','newview',$hyou_hyouji)"></th>
+			<th>link<br><input type="checkbox" name="lnk_ALL" value="" onclick="fncAllCheck('new_ALL','link_sw',$hyou_hyouji)"></th>
 			<th>削除<br><input type="checkbox" name="dele_ALL" value="" onclick="fncAllCheck('dele_ALL','delete',$hyou_hyouji)"></th>
 		</tr>
 __EOS0__;
@@ -435,6 +436,7 @@ while($row = pg_fetch_object($result)){//表示ループ開始
 	$danrakumei =$row->danraku_mei;
 	$cale = $row->calendar_kokai;
 	$newview = $row->shinchaku_kokai;
+	$link_sw = $row->link_switch;
 	
 	//文字コード設定
 	mb_language("Japanese");
@@ -488,6 +490,7 @@ while($row = pg_fetch_object($result)){//表示ループ開始
 	echo			"	<td><input type='hidden' name='newview$i' value='f' />	\n";
 	echo			"	<input type='checkbox' name='newview$i' value='t'";if($newview == 't'){echo " checked='checked'";}if($title == "" or $comment == ""){echo "disabled='disabled'";}echo "></td>	\n";
 	echo		"	<td><input type='checkbox' name='delete$i' value='$id'></td>		\n";
+	echo		"	<td><input type='checkbox' name='link$i' value='$id'></td>		\n";
 	echo		"</tr>";
 
 

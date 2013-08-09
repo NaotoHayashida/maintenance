@@ -29,6 +29,12 @@ if(isset($_POST["k_new"])){
 else{
 	$k_new = 0;																//新着情報に公開
 }
+if(isset($_POST["l_sw"])){
+	$l_sw = 1;																//リンク表示
+}
+else{
+	$l_sw = 0;																//リンク非表示
+}
 
 
 
@@ -42,6 +48,7 @@ if($mode == "insert"){
 	$h_shuryobi = $_POST["shuryobi"];
 	$calendar_kokai = $_POST["k_cal"];
 	$shinchaku_kokai = $_POST["k_new"];
+	$link_switch = $_POST["l_sw"];
 }
 
 //プレビュー表示時用のフォームデータを保存
@@ -53,6 +60,7 @@ if($mode == "insert"){
 	$_SESSION["check_shuryobi"] = $shuryobi;
 	$_SESSION["check_k_cal"] = $_POST["k_cal"];
 	$_SESSION["check_k_new"] = $k_new;
+	$_SESSION["check_l_sw"] = $_POST["l_sw"];
 
 //編集遷移判断
 	$_SESSION["check_id"] = $_GET["id"];
@@ -96,6 +104,7 @@ if($update_id != ""and $edit==TRUE and $mode == "insert" ){
 	$h_shuryobi = $_POST["shuryobi"];
 	$calendar_kokai = $_POST["k_cal"];
 	$shinchaku_kokai = $_POST["k_new"];
+	$link_switch = $_POST["l_sw"];
 
 	//エラー処理　1ならUPdateしない
 	$error =0 ;
@@ -138,7 +147,7 @@ if($update_id != ""and $edit==TRUE and $mode == "insert" ){
 				"comment = '" . $comment . "', danraku_mei = '" . $anchor . "',".
 				"sakusei_sha = '" . $_SERVER['REMOTE_USER'] . "', kaishi_bi = '" . $kaishibi . "',".
 				"shuryo_bi = '" . $shuryobi . "', calendar_kokai = '" . $k_cal . "', shinchaku_kokai = '" . $k_new . "'".
-				"where id = " . $update_id . ";";
+				"where id = " . $update_id . "link_switch = " . $l_sw . ";";
 				
 	//			$_SESSION['gyoji-iti_ID'] 			= $update_id;
 				
@@ -243,6 +252,9 @@ if($update_id != ""and $edit==TRUE and $mode == "insert" ){
 					<p class="toroku2">
 						<input type="submit" name="action" value="博物館のご案内のプレビュー" class="button-pre" onclick="return stay_here();">
 					</p>
+				</div>
+				<div class="gyoji-left2">
+					<pre class="toroku1">リンク表示 <?php echo "<input type='checkbox' name='l_sw' class='l_sw' value='t'";if($link_switch == 't'){echo " checked='checked'";}echo ">	\n"; ?></pre>
 				</div>
 				<div class="kyotsu">
 					<p>
@@ -357,9 +369,9 @@ function gyojitoroku_minyuryoku_check(){
 				//pg_free_result($result)  //メモリの解放
 
 				$sql = 	"insert into gyoji (hyoji_yusendo,gyoji_kubun, title, comment, danraku_mei, ".
-						"sakusei_sha, kaishi_bi, shuryo_bi, calendar_kokai, shinchaku_kokai)".
+						"sakusei_sha, kaishi_bi, shuryo_bi, calendar_kokai, shinchaku_kokai, link_switch)".
 						"values (" . $yusendo . " ," . $gyojikubun . "," . "'" . $title . "'" . "," . "'" . $comment . "'" . "," . "'" . $anchor . "'" . ", '" . $_SERVER['REMOTE_USER'] . "'," .
-						"'" . $kaishibi . "'" . "," . "'" . $shuryobi . "'" . "," . "'" . $k_cal . "'" . "," . "'" . $k_new . "');";
+						"'" . $kaishibi . "'" . "," . "'" . $shuryobi . "'" . "," . "'" . $k_cal . "'" . "," . "'" . $k_new . "'" . "," . "'" . $l_sw . "');";
 
 				pg_query($dbconn, "BEGIN"); //トランザクション開始
 				$result = pg_query($dbconn, $sql);
